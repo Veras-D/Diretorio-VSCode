@@ -1,5 +1,5 @@
 clc; clear; close all
-fprintf('Programa de Categorização de Ligas em Detrimento da Porcentagem de Carbono nos intervalos de 0,022 e 6,7.\n\n')
+fprintf('Programa de Categorização de Ligas em Detrimento da Porcentagem de Carbono nos intervalos de 0,022% e 6,7%.\n\n')
 C = input('Qual a Porcentagem de Carbono da Liga? ');
 if C < 0.77 && C > 0.022
     disp('Aço Hipoeutetoide')
