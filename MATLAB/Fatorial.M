@@ -1,5 +1,5 @@
 clc; clear
-x = 1;
+x = input('Dijite um numero: ');
 while(x<0)
     x = input('Dijite um numero: ');
     disp('Não')
