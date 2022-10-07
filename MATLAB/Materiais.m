@@ -1,6 +1,6 @@
 clc; clear; close all
 disp('Programa de Categorização de Ligas em Detrimento da Porcentagem de Carbono')
-C = input('Qual a Porcentagem de Carbono da Liga? ')
+C = input('Qual a Porcentagem de Carbono da Liga? ');
 if C < 0.77 && C > 0.022
     disp('Aço Hipoeutetoide')
 elseif C == 0.77
