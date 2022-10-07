@@ -12,38 +12,45 @@ elseif C <= 6.7 && C > 2.14
 else
     disp('Essa porcentagem não está dentro do intervalo 0,022% < %C < 6,7% ou não foi reconhecida.')
 end
-TempEutetica = [1147 1147]
+
 PorcEutetica = [2.14 6.7]
+TempEutetica = [1147 1147]
 
-TempEutetoide = [727 727]
 PorcEutetica = [0.022 6.7]
+TempEutetoide = [727 727]
 
-TempFerrita1 = [0 727]
 PorcFerrita1 = [0 0.022]
+TempFerrita1 = [0 727]
 
-TempFerrita2 = [727 912]
 PorcFerrita2 = [0.022 0]
+TempFerrita2 = [727 912]
 
-TempAustenita1 = []
-PorcAustenita1 = []
+PorcAustenita1 = [0:0.1:0.77]
+TempAustenita1 = [320*(PorcAustenita1-0.76)^2+727]
 
-TempAustenita2 = [727 1147]
 PorcAustenita2 = [0.77 2.14]
+TempAustenita2 = [727 1147]
 
-TempAustenita3 = [1147 1493]
 PorcAustenita3 = [2.14 0.16]
+TempAustenita3 = [1147 1493]
 
-TempAustenita4 = [1493 1394]
 PorcAustenita4 = [0.16 0]
+TempAustenita4 = [1493 1394]
 
-TempPeripetica = [1493 1493]
 PorcPeripetica = [0.1 0.51]
+TempPeripetica = [1493 1493]
 
-TempFerritaDel1 = [1534 1496]
 PorcFerritaDel1 = [0 0.1]
+TempFerritaDel1 = [1534 1496]
 
-TempFerritaDel2 = [1493 1394]
 PorcFerritaDel2 = [0.1 0]
+TempFerritaDel2 = [1493 1394]
 
-TempFerritaDel3 = [1394 1493]
 PorcFerritaDel3 = [0 0.16]
+TempFerritaDel3 = [1394 1493]
+
+PorcAusLiq = [0:0.1:4.30]
+TempAusLiq = [188.5*(-PorcAusLiq+4.3)^0.5+1147]
+
+PorcFe3CLiq = [4.3:0.1:6.7]
+TempFe3CLiq = [77*(PorcFe3CLiq-4.3)^0.5+1147]
