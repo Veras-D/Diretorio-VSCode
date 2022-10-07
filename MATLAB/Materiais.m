@@ -1,6 +1,5 @@
 clc; clear; close all
-fprintf('Programa de Categorização de Ligas em Detrimento da Porcentagem de Carbono nos intervalos de 0,022% e 6,7%.\n\n')
-C = input('Qual a Porcentagem de Carbono da Liga? ');
+C = input('Programa de Categorização de Ligas em Detrimento da Porcentagem de Carbono nos intervalos de 0,022% e 6,7%.\n\nQual a Porcentagem de Carbono da Liga? ');
 if C < 0.77 && C > 0.022
     disp('Aço Hipoeutetoide')
 elseif C == 0.77
@@ -16,13 +15,13 @@ end
 PorcEutetica = [2.14 6.7];
 TempEutetica = [1147 1147];
 
-PorcEutetica = [0.022 6.7];
+PorcEutetoide = [0.022 6.7];
 TempEutetoide = [727 727];
 
 PorcFerrita1 = [0 0.022];
 TempFerrita1 = [0 727];
 
-PorcFerrita2 = [0.022 0;]
+PorcFerrita2 = [0.022 0];
 TempFerrita2 = [727 912];
 
 PorcAustenita1 = [0:0.1:0.77];
@@ -54,3 +53,5 @@ TempAusLiq = [188.5*(-PorcAusLiq+4.3)^0.5+1147];
 
 PorcFe3CLiq = [4.3:0.1:6.7];
 TempFe3CLiq = [77*(PorcFe3CLiq-4.3)^0.5+1147];
+
+plot(PorcEutetica, TempEutetica)
