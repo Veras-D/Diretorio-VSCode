@@ -12,7 +12,7 @@ if N1 == 0 && N2 * 10 + N3 == 10
     C = (N4 * 10 + N5) / 100;
     PC = [C C];
     PT = [T 0];
-elseif N1 == 1 && N1 * 10 + N2 == 10
+elseif N1 == 1 && N1 * 10 + N2 == 10 && N3 ~= 0
     C = (N3 * 100 + N4 * 10 + N5) / 100;
     PC = [C C];
     PT = [T 0];
@@ -34,10 +34,10 @@ else
     disp('Essa porcentagem não está dentro do intervalo 0,022% < %C < 6,7% ou não foi reconhecida como valida.')
 end
 
-PorcEutetica = [2.14 6.7];
+PorcEutetica = [2.14 7];
 TempEutetica = [1147 1147];
 
-PorcEutetoide = [0.022 6.7];
+PorcEutetoide = [0.022 7];
 TempEutetoide = [727 727];
 
 PorcFerrita1 = [0 0.022];
@@ -70,13 +70,26 @@ TempFerritaDel2 = [1515 1394];
 PorcFerritaDel3 = [0 0.16];
 TempFerritaDel3 = [1394 1515];
 
-PorcAusLiq = [0:0.1:4.30];
+PorcAusLiq = [0:0.1:4.3];
 TempAusLiq = [188.5*(-PorcAusLiq+4.3).^0.5+1147];
 
-PorcFe3CLiq = [4.3:0.1:6.7];
+PorcFe3CLiq = [4.3:0.1:7];
 TempFe3CLiq = [77*(PorcFe3CLiq-4.3).^0.5+1147];
 
 plot(PorcEutetica, TempEutetica, PorcEutetoide, TempEutetoide, PorcFerrita1, TempFerrita1, PorcFerrita2, TempFerrita2, PorcAustenita1, TempAustenita1, PorcAustenita2, TempAustenita2, PorcAustenita3, TempAustenita3, PorcAustenita4, TempAustenita4, PorcPeripetica, TempPeripetica, PorcFerritaDel1, TempFerritaDel1, PorcFerritaDel2, TempFerritaDel2, PorcFerritaDel3, TempFerritaDel3, PorcAusLiq, TempAusLiq, PorcFe3CLiq, TempFe3CLiq, PC, PT, 'k--o' )
 title('Diagrama Fe-C')
-xlabel('Porcentagem de Carbono')
+xlabel('Porcentagem de Carbono(°C)')
 ylabel('Temperatura(°C)')
+grid on
+xlim([0 7])
+ylim([400 1600])
+yticks(0:400:1600)
+Aust = text(0.7, 1100,'γ','FontSize',10);
+Fert = text(-0.8, 700,'α-->','FontSize',10);
+Perl = text(5, 600,'P','FontSize',10);
+FDel = text(-0.8, 1500,'δ-->','FontSize',10);
+Liqu = text(4.3, 1300,'l','FontSize',10);
+FAus = text(-0.9, 750,'α+γ->','FontSize',9);
+LAus = text(2.5, 1250,'γ+l','FontSize',10);
+LCem = text(5.5, 1200,'l+Fe3C','FontSize',9);
+CAus = text(3, 1000,'γ+Fe3C','FontSize',9);
