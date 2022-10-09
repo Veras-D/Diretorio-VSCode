@@ -52,19 +52,19 @@ while E == 1
         if T >= 727
             FP = ((0.77 - C) / (0.77 - 0.022)) * 100;
             P = 100 - FP;
-            FT = ((6.7 - C) / (6.7 - 0.022)) * 100;
+            FT = ((6.7 - C) / (6.7)) * 100;
             CT = 100 - FT;
             fprintf('A liga é um Aço Hipoeutetoide, com %.2f%% Ferrita proeutetoide, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', FP, P, FT, CT)
         elseif T < 727
             P = 100;
-            FT = ((6.7 - C) / (6.7 - 0.022)) * 100;
+            FT = ((6.7 - C) / (6.7)) * 100;
             CT = 100 - FT;
             fprintf('A liga é um Aço Hipoeutetoide, com %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', P, FT, CT)
         end
 
     elseif C == 0.77
         P = 100;
-        FT = ((6.7 - C) / (6.7 - 0.022)) * 100;
+        FT = ((6.7 - C) / (6.7)) * 100;
         CT = 100 - FT;
         fprintf('A liga é um Aço Eutetoide, com %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', P, FT, CT)
     elseif C > 0.77 && C < 2.11
@@ -72,12 +72,12 @@ while E == 1
         if T >= 727
             CP = ((C - 0.77) / (6.7 - 0.77)) * 100;
             P = 100 - CP;
-            FT = ((6.7 - C) / (6.7 - 0.022)) * 100;
+            FT = ((6.7 - C) / (6.7)) * 100;
             CT = 100 - FT;
             fprintf('A liga é um Aço Hipereutetoide, com %.2f%% Cementita proeutetoide, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', CP, P, FT, CT)
         elseif T < 727
             P = 100;
-            FT = ((6.7 - C) / (6.7 - 0.022)) * 100;
+            FT = ((6.7 - C) / (6.7)) * 100;
             CT = 100 - FT;
             fprintf('A liga é um Aço Hipereutetoide, com %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', P, FT, CT)
         end
@@ -87,12 +87,12 @@ while E == 1
         if T >= 727
             CP = ((C - 0.77) / (6.7 - 0.77)) * 100;
             P = 100 - CP;
-            FT = ((6.7 - C) / (6.7 - 0.022)) * 100;
+            FT = ((6.7 - C) / (6.7)) * 100;
             CT = 100 - FT;
             fprintf('A liga é um Ferro Fundido Hipoeutetico, com %.2f%% Cementita proeutetoide, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', CP, P, FT, CT)
         elseif T < 727
             P = 100;
-            FT = ((6.7 - C) / (6.7 - 0.022)) * 100;
+            FT = ((6.7 - C) / (6.7)) * 100;
             CT = 100 - FT;
             fprintf('A liga é um Ferro Fundido Hipoeutetico, com %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', P, FT, CT)
         end
@@ -102,12 +102,12 @@ while E == 1
         if T >= 727
             CP = ((C - 0.77) / (6.7 - 0.77)) * 100;
             P = 100 - CP;
-            FT = ((6.7 - C) / (6.7 - 0.022)) * 100;
+            FT = ((6.7 - C) / (6.7)) * 100;
             CT = 100 - FT;
             fprintf('A liga é um Ferro Fundido Eutetico, com %.2f%% Cementita proeutetoide, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', CP, P, FT, CT)
         elseif T < 727
             P = 100;
-            FT = ((6.7 - C) / (6.7 - 0.022)) * 100;
+            FT = ((6.7 - C) / (6.7)) * 100;
             CT = 100 - FT;
             fprintf('A liga é um Ferro Fundido Eutetico, com %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', P, FT, CT)
         end
@@ -117,12 +117,12 @@ while E == 1
         if T >= 727
             CP = ((C - 0.77) / (6.7 - 0.77)) * 100;
             P = 100 - CP;
-            FT = (6.7 - C) / (6.7 - 0.022) * 100;
+            FT = (6.7 - C) / (6.7) * 100;
             CT = 100 - FT;
             fprintf('A liga é um Ferro Fundido Hipereutetico, com %.2f%% Cementita proeutetoide, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', CP, P, FT, CT)
         elseif T < 727
             P = 100;
-            FT = ((6.7 - C) / (6.7 - 0.022)) * 100;
+            FT = ((6.7 - C) / (6.7)) * 100;
             CT = 100 - FT;
             fprintf('A liga é um Ferro Fundido Hipereutetico, com %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', P, FT, CT)
         end
