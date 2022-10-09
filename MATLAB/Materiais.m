@@ -188,7 +188,7 @@ while E == 1
     Liqu = text(4.3, 1300, 'L', 'FontSize', 10);
     FAus = text(-0.9, 770, 'α+γ->', 'FontSize', 9);
     LAus = text(2.5, 1250, 'γ+L', 'FontSize', 10);
-    LCem = text(6, 1200, 'L+Fe3C', 'FontSize', 9);
+    LCem = text(5.7, 1200, 'L+Fe3C', 'FontSize', 9);
     CAus = text(3, 1000, 'γ+Fe3C', 'FontSize', 9);
     E = input('\nDeseja consultar outra liga?\nSim = 1\nNão = Qualquer outro numero\n');
 end
