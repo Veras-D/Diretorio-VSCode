@@ -29,17 +29,26 @@ while E == 1
                 disp('Essa porcentagem não está dentro do intervalo 0,008% < %C < 6,7% ou não foi reconhecida como valida.')
             end
         end
+        if C < 0.77
+            A3 = 312 * (C - 0.77).^2 + 727;
+        elseif C==0.77
+            A3 = 727;
+        elseif C > 0.77 && C < 2.11
+            Acm = 313.433 * C + 485.66;
+        elseif C >= 2.11 && C <= 6.67
+            Acm = 1147;
+        end
     if C >= 0.008 && C < 0.022
         if T >= 727
             FP = ((0.77 - C) / (0.77)) * 100;
             P = 100 - FP;
             FT = ((6.7 - C) / (6.7)) * 100;
             CT = 100 - FT;
-            fprintf('A liga é um Aço Hipoeutetoide, com %.2f%% Ferrita proeutetoide, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', FP, P, FT, CT)
+            fprintf('A liga é um Aço Hipoeutetoide, portanto é recomendado que a mistura seja aquecida até %.2f°C. A composição é de %.2f%% Ferrita proeutetoide, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', A3, FP, P, FT, CT)
         elseif T < 727
             FT = ((6.7 - C) / (6.7)) * 100;
             CT = 100 - FT;
-            fprintf('A liga não foi aquecida até a temperatura eutetoide, caso fosse aquecida até essa temperatura a liga seria um Aço Hipoeutetoide com %.2f%% de Ferrita total e %.2f%% de Cementita total.', FT, CT)
+            fprintf('A liga não foi aquecida até a temperatura eutetoide, caso fosse aquecida até essa temperatura ou até a temperatura A3, nesse caso %.2f°C, a liga seria um Aço Hipoeutetoide com %.2f%% de Ferrita total e %.2f%% de Cementita total.', A3, FT, CT)
          end
     elseif C >= 0.022 && C < 0.77
         if T >= 727
@@ -47,25 +56,25 @@ while E == 1
             P = 100 - FP;
             FT = ((6.7 - C) / (6.7)) * 100;
             CT = 100 - FT;
-            fprintf('A liga é um Aço Hipoeutetoide, com %.2f%% Ferrita proeutetoide, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', FP, P, FT, CT)
+            fprintf('A liga é um Aço Hipoeutetoide, portanto é recomendado que a mistura seja aquecida até %.2f°C. A composição é de %.2f%% Ferrita proeutetoide, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', A3, FP, P, FT, CT)
         elseif T < 727
             FP = ((0.77 - C) / (0.77 - 0.022)) * 100;
             P = 100 - FP;
             FT = ((6.7 - C) / (6.7)) * 100;
             CT = 100 - FT;
-            fprintf('A liga não foi aquecida até a temperatura eutetoide, caso fosse aquecida até essa temperatura a liga seria um Aço Hipoeutetoide com %.2f%% Ferrita proeutetoide, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', FP, P, FT, CT)
+            fprintf('A liga não foi aquecida até a temperatura eutetoide, caso fosse aquecida até essa temperatura  ou até a temperatura A3, Nesse caso %.2f°C, a liga seria um Aço Hipoeutetoide com %.2f%% Ferrita proeutetoide, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', A3, FP, P, FT, CT)
         end
     elseif C == 0.77
         if T >= 727
             P = 100;
             FT = ((6.7 - C) / (6.7)) * 100;
             CT = 100 - FT;
-            fprintf('A liga é um Aço Eutetoide, com %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', P, FT, CT)
+            fprintf('A liga foi aquecida até a temperatura de %.2f°C e portanto, é um Aço Eutetoide, com %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', A3, P, FT, CT)
         elseif T < 727
             P = 100;
             FT = ((6.7 - C) / (6.7)) * 100;
             CT = 100 - FT;
-            fprintf('A liga não foi aquecida até a temperatura eutetoide caso fosse aquecida até 727°C a liga seria um Aço Eutetoide, com %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', P, FT, CT)
+            fprintf('A liga não foi aquecida até a temperatura eutetoide caso fosse aquecida até 727°C ou até a temperatura A3 de %.2f°C a liga seria um Aço Eutetoide, com %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', A3, P, FT, CT)
         end
     elseif C > 0.77 && C < 2.11
         if T >= 727
@@ -73,13 +82,13 @@ while E == 1
             P = 100 - CP;
             FT = ((6.7 - C) / (6.7)) * 100;
             CT = 100 - FT;
-            fprintf('A liga é um Aço Hipereutetoide, com %.2f%% Cementita proeutetoide, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', CP, P, FT, CT)
+            fprintf('A liga foi aquecida até pelo menos a temperatura eutetoide, sendo recomendado o aquecimento até a temperatura Acm, nesse caso %.2f°C, e portanto é um Aço Hipereutetoide, com %.2f%% Cementita proeutetoide, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', Acm, CP, P, FT, CT)
         elseif T < 727
             CP = ((C - 0.77) / (6.7 - 0.77)) * 100;
             P = 100 - CP;
             FT = ((6.7 - C) / (6.7)) * 100;
             CT = 100 - FT;
-            fprintf('A liga não alcançou a temperatura Eutetoide caso a mistura fosse aquecida até a temperatura de pelo menos 727°C a liga seria um Aço Hipereutetoide, com %.2f%% Cementita proeutetoide, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', CP, P, FT, CT)
+            fprintf('A liga não alcançou a temperatura Eutetoide ou a Temperatura Acm caso a mistura fosse aquecida até a temperatura de pelo menos 727°C ou até a temperatura de %.2f°C a liga seria um Aço Hipereutetoide, com %.2f%% Cementita proeutetoide, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', Acm, CP, P, FT, CT)
         end
     elseif C >= 2.11 && C < 4.3
         if T >= 727
@@ -87,13 +96,13 @@ while E == 1
             P = 100 - CP;
             FT = ((6.7 - C) / (6.7)) * 100;
             CT = 100 - FT;
-            fprintf('A liga é um Ferro Fundido Hipoeutetico, com %.2f%% Cementita proeutetoide, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', CP, P, FT, CT)
+            fprintf('A liga foi aquecida até pelo menos a temperatura eutetoide, sendo recomendado o aquecimento até a temperatura Acm, nesse caso %.2f°C, e portanto é um Ferro Fundido Hipoeutetico, com %.2f%% Cementita proeutetoide, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', Acm, CP, P, FT, CT)
         elseif T < 727
             P = ((C - 0.77) / (6.7 - 0.77)) * 100;
             P = 100 - CP;
             FT = ((6.7 - C) / (6.7)) * 100;
             CT = 100 - FT;
-            fprintf('A liga não alcaçou a temperatura eutetoide caso a mistura alcançase essa temperatura a liga seria é um Ferro Fundido Hipoeutetico, com %.2f%% Cementita proeutetoide, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', CP, P, FT, CT)
+            fprintf('A liga não alcaçou a temperatura eutetoide ou a temperatura Acm caso a mistura alcançase a temperatura de 727°C ou a temperatura de %.2f°C, a liga seria é um Ferro Fundido Hipoeutetico, com %.2f%% Cementita proeutetoide, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', Acm, CP, P, FT, CT)
         end
     elseif C == 4.3
         if T >= 727
@@ -101,13 +110,13 @@ while E == 1
             P = 100 - CP;
             FT = ((6.7 - C) / (6.7)) * 100;
             CT = 100 - FT;
-            fprintf('A liga é um Ferro Fundido Eutetico, com %.2f%% Cementita proeutetoide, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', CP, P, FT, CT)
+            fprintf('A liga foi aquecida até pelo menos a temperatura eutetoide, sendo recomendado o aquecimento até a temperatura Acm, nesse caso %.2f°C, e portanto a mistura é um Ferro Fundido Eutetico, com %.2f%% Cementita proeutetoide, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', Acm, CP, P, FT, CT)
         elseif T < 727
             CP = ((C - 0.77) / (6.7 - 0.77)) * 100;
             P = 100 - CP;
             FT = ((6.7 - C) / (6.7)) * 100;
             CT = 100 - FT;
-            fprintf('A mistura não foi aquecida o suficiente, caso fosse aquecida até a temperatura eutetoide a liga seria um Ferro Fundido Eutetico, com %.2f%% Cementita proeutetoide, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', CP, P, FT, CT)
+            fprintf('A mistura não foi aquecida o suficiente, caso fosse aquecida até a temperatura eutetoide ou até a temperatura Acm, nesse caso %.2f°C, a liga seria um Ferro Fundido Eutetico, com %.2f%% Cementita proeutetoide, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', Acm, CP, P, FT, CT)
         end
     elseif C > 4.3 && C <= 6.67
         if T >= 727
@@ -115,13 +124,13 @@ while E == 1
             P = 100 - CP;
             FT = (6.7 - C) / (6.7) * 100;
             CT = 100 - FT;
-            fprintf('A liga é um Ferro Fundido Hipereutetico, com %.2f%% Cementita primaria, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', CP, P, FT, CT)
+            fprintf('A liga foi aquecida até pelo menos a temperatura eutetoide, sendo recomendado o aquecimento até a temperatura Acm, nesse caso %.2f°C, e portanto é um Ferro Fundido Hipereutetico, com %.2f%% Cementita primaria, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', Acm, CP, P, FT, CT)
         elseif T < 727
             CP = ((C - 0.77) / (6.7 - 0.77)) * 100;
             P = 100 - CP;
             FT = (6.7 - C) / (6.7) * 100;
             CT = 100 - FT;
-            fprintf('A mistura não foi aquecida o suficiente, caso fosse aquecida até a temperatura eutetoide a liga seria um Ferro Fundido Hipereutetico, com %.2f%% Cementita primaria, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', CP, P, FT, CT)
+            fprintf('A mistura não foi aquecida o suficiente, caso fosse aquecida até a temperatura eutetoide ou até a temperatura Acm, nesse caso %.2f°C, a liga seria um Ferro Fundido Hipereutetico, com %.2f%% Cementita primaria, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', Acm, CP, P, FT, CT)
         end
     else
         disp('Essa porcentagem não está dentro do intervalo 0,008% < %C < 6,7% ou não foi reconhecida como valida.')
