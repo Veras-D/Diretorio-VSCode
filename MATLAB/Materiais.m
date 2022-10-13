@@ -5,7 +5,7 @@ while E == 1
     disp('Programa de Categorização de Ligas Ferro Carbono do Tipo 10 em Detrimento da Porcentagem de Carbono nos intervalos de 0,008% e 6,67%.')
 
     while C == 7 || T < 400
-        Codigo = input('\n\nDigite o Codigo da Liga? ');
+        Codigo = input('\n\nDigite o Código da Liga? ');
         T = input('Até qual temperatura a liga foi aquecida(Em °C)? ');
 
         N1 = fix(Codigo / 10000);
@@ -26,9 +26,8 @@ while E == 1
                 C = 7;
                 PC = [0];
                 PT = [0];
-                disp('Essa porcentagem não está dentro do intervalo 0,008% < %C < 6,7% ou não foi reconhecida como valida.')
+                disp('Essa porcentagem não está dentro do intervalo 0,008% < %C < 6,7% ou não foi reconhecida como válida.')
             end
-        end
         if C < 0.77
             A3 = 312 * (C - 0.77).^2 + 727;
         elseif C==0.77
@@ -38,6 +37,7 @@ while E == 1
         elseif C >= 2.11 && C <= 6.67
             Acm = 1147;
         end
+    end
     if C >= 0.008 && C < 0.022
         if T >= 727
             FP = ((0.77 - C) / (0.77)) * 100;
@@ -133,7 +133,7 @@ while E == 1
             fprintf('A mistura não foi aquecida o suficiente, caso fosse aquecida até a temperatura eutetoide ou até a temperatura Acm, nesse caso %.2f°C, a liga seria um Ferro Fundido Hipereutetico, com %.2f%% Cementita primaria, %.2f%% de Perlita, %.2f%% de Ferrita total e %.2f%% de Cementita total.', Acm, CP, P, FT, CT)
         end
     else
-        disp('Essa porcentagem não está dentro do intervalo 0,008% < %C < 6,7% ou não foi reconhecida como valida.')
+        disp('Essa porcentagem não está dentro do intervalo 0,008% < %C < 6,7% ou não foi reconhecida como válida.')
     end
 
     PorcEutetica = [2.11 7];
@@ -176,7 +176,7 @@ while E == 1
     TempAusLiq = [188.56 * (-PorcAusLiq + 4.3).^0.5 + 1147];
 
     PorcFe3CLiq = [4.3:0.1:7];
-    TempFe3CLiq = [53.6 * (PorcFe3CLiq - 4.3).^0.5 + 1147];
+    TempFe3CLiq = [53.9 * (PorcFe3CLiq - 4.3).^0.5 + 1147];
 
     PorcFe3C = [6.67 6.67];
     TempFe3C = [0 1230];
@@ -199,5 +199,5 @@ while E == 1
     LAus = text(2.5, 1250, 'γ+L', 'FontSize', 10);
     LCem = text(5.7, 1200, 'L+Fe3C', 'FontSize', 9);
     CAus = text(3, 1000, 'γ+Fe3C', 'FontSize', 9);
-    E = input('\nDeseja consultar outra liga?\nSim = 1\nNão = Qualquer outro numero\n');
+    E = input('\nDeseja consultar outra liga?\nSim = 1\nNão = Qualquer outro número\n');
 end
