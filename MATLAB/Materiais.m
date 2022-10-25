@@ -199,7 +199,7 @@ while E == 1
     LAus = text(2.5, 1250, 'γ+L', 'FontSize', 10);
     LCem = text(5.7, 1200, 'L+Fe3C', 'FontSize', 9);
     CAus = text(3, 1000, 'γ+Fe3C', 'FontSize', 9);
-    while E ~=1 || E~=0
+    while E ~= 1 && E ~= 0
         E = input('\nDeseja consultar outra liga?\nSim = 1\nNão = 0\n');
     end
 end
