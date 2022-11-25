@@ -9,6 +9,7 @@ An = atand(abs(VR(1,2)/VR(1,1)));
 VC = [F * cosd(An), F * sind(An), 0]
 DH = input('Determine a distancia horizontal entre a força e o apoio (Em metros): ');
 DV = input('Determine a distancia vertical entre a força e o apoio (Em metros): ');
+Mr = PV(VR, VC)
 while R~=1 && R~=2 && R ~=3
     switch R
         case 1
