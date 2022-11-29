@@ -1,4 +1,7 @@
-R = input('Escolha o tipo de apoio:\n1 - Rolete\n2 - Pino\n3 - Engaste');
+R1 = input('Escolha o tipo de apoio em A:\n[1] - Rolete\n[2] - Pino\n[3] - Engaste');
+
+
+
 A = input('Digite o angulo formado entre a força de apoio e o eixo X (Em graus): ');
 F = input('Insira o modulo da força (Em Newtons): ');
 M = input('Digite o momento associado a força (Em N*m): ');
@@ -11,17 +14,58 @@ DH = input('Determine a distancia horizontal entre a força e o apoio (Em metros
 DV = input('Determine a distancia vertical entre a força e o apoio (Em metros): ');
 Mr = PV(VR, VC)
 while R~=1 && R~=2 && R ~=3
-    switch R
+    switch R1
         case 1
-            Ay = -F * sind(An)
-            %falar direção e sentido também
+            R2 = input('Escolha o tipo de apoio em B:\n[1] - Rolete\n[2] - Pino\n[3] - Engaste\n[4] - Sem apoio em B');
+            while R2~=1 && R2~=2 && R2~=3 && R2~=4
+                switch R2
+                    case 1
+
+                    case 2
+
+                    case 3
+
+                    case 4
+                        Ay = -F * sind(An)
+                    otherwise
+                        disp('Escolha uma opção valida')
+                end
+            end
         case 2
-            Ay = -F * sind(An)
-            Ax = -F * cosd(An)
+            R2 = input('Escolha o tipo de apoio em B:\n[1] - Rolete\n[2] - Pino\n[3] - Engaste\n[4] - Sem apoio em B');
+            while R2~=1 && R2~=2 && R2~=3 && R2~=4
+                switch R2
+                    case 1
+
+                    case 2
+
+                    case 3
+
+                    case 4
+                        Ay = -F * sind(An)
+                        Ax = -F * cosd(An)
+                    otherwise
+                        disp('Escolha uma opção valida')
+                end
+            end
         case 3
-            Ay = -F * sind(An)
-            Ax = -F * cosd(An)
-            Mr = -M -Mr
+            R2 = input('Escolha o tipo de apoio em B:\n[1] - Rolete\n[2] - Pino\n[3] - Engaste\n[4] - Sem apoio em B');
+            while R2~=1 && R2~=2 && R2~=3 && R2~=4
+                switch R2
+                    case 1
+
+                    case 2
+
+                    case 3
+
+                    case 4
+                        Ay = -F * sind(An)
+                        Ax = -F * cosd(An)
+                        Mr = -M -Mr
+                    otherwise
+                        disp('Escolha uma opção valida')
+                end
+            end
         otherwise
             disp('Escolha uma opção valida')
     end
