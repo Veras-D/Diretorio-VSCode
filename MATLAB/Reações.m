@@ -26,7 +26,7 @@ while R~=1 && R~=2 && R ~=3
                     case 3
 
                     case 4
-                        Ay = -F * sind(An)
+                        Ay = -F * sind(An);
                     otherwise
                         disp('Escolha uma opção valida')
                 end
@@ -42,8 +42,8 @@ while R~=1 && R~=2 && R ~=3
                     case 3
 
                     case 4
-                        Ay = -F * sind(An)
-                        Ax = -F * cosd(An)
+                        Ay = -F * sind(An);
+                        Ax = -F * cosd(An);
                     otherwise
                         disp('Escolha uma opção valida')
                 end
@@ -59,9 +59,9 @@ while R~=1 && R~=2 && R ~=3
                     case 3
 
                     case 4
-                        Ay = -F * sind(An)
-                        Ax = -F * cosd(An)
-                        Mr = -M -Mr
+                        Ay = -F * sind(An);
+                        Ax = -F * cosd(An);
+                        Mr = -M -Mr;
                     otherwise
                         disp('Escolha uma opção valida')
                 end
