@@ -1,17 +1,17 @@
 clc; clear;
 %EDUARDO
 CordA_B = [0 0 0; 0 0 0];
-syms Num R1 R2 Ay Ax By Bx Ma Mb
+syms NumR R1 R2 Ay Ax By Bx Ma Mb
 A = [Ax Ay 0];
 B = [Bx By 0];
-while Num ~= 1 & Num ~= 2
-    Num = input('Qual o número de componentes de apoio (Máximo 2)? ');
-    switch Num 
+while NumR ~= 1 & NumR ~= 2
+    NumR = input('Qual o número de componentes de apoio (Máximo 2)? ');
+    switch NumR 
         case 1 
             CordA_B(1,1) = input('Insira o valor da coordenada X do componente de reação A: ');
             CordA_B(1,2) = input('Insira o valor da coordenada Y do componente de reação A: ');
-            By = 0;
             Bx = 0;
+            By = 0;
             Mb = 0;
             %VEM DO CÓDIGO DO DANIEL
             CordF_M = [0 0 0];
@@ -37,7 +37,7 @@ while Num ~= 1 & Num ~= 2
                 Rab = CordA_B(1,:) - CordA_B(2,:);
                 Rba = CordA_B(2,:) - CordA_B(1,:);
                 Rfa = CordF_M - CordA_B(1,:);
-                Rfb = CordF_M - CordA_B(1,:);
+                Rfb = CordF_M - CordA_B(2,:);
                 if CordA_B(1,1) == CordA_B(2,1) && CordA_B(1,2) == CordA_B(2,2)
                     disp('A e B precisão ter coordenadas distintas')
                 else
@@ -95,8 +95,12 @@ while R1~=1 && R1~=2 && R1~=3
                         Mb = double(Mb);
                         fprintf('TEXTO')
                     case 4
-                       Ay = -F(1,2);
-                       fprintf('TEXTO')
+                        if NumR = 1    
+                            Ay = -F(1,2);
+                            fprintf('TEXTO')
+                        else
+                            disp('Escolha uma opção válida')
+                        end
                     otherwise
                         disp('Escolha uma opção válida')
                 end
@@ -145,9 +149,13 @@ while R1~=1 && R1~=2 && R1~=3
                         Mb = double(Mb);
                         fprintf('TEXTO')
                     case 4
-                        Ay = -F(1,2);
-                        Ax = -F(1,1);
-                        fprintf('TEXTO')
+                        if NumR = 1
+                            Ay = -F(1,2);
+                            Ax = -F(1,1);
+                            fprintf('TEXTO')
+                        else
+                            disp('Escolha uma opção válida')
+                        end
                     otherwise
                         disp('Escolha uma opção válida')
                 end
@@ -196,10 +204,14 @@ while R1~=1 && R1~=2 && R1~=3
                         Mb = double(Mb);
                         fprintf('TEXTO')
                     case 4
-                        Ay = -F(1,2);
-                        Ax = -F(1,1);
-                        Ma = sum(cross(Rfa,F)) + M;
-                        fprintf('TEXTO')
+                        if NumR = 1
+                            Ay = -F(1,2);
+                            Ax = -F(1,1);
+                            Ma = sum(cross(Rfa,F)) + M;
+                            fprintf('TEXTO')
+                        else
+                            disp('Escolha uma opção válida')
+                        end
                     otherwise
                         disp('Escolha uma opção válida')
                 end
@@ -208,3 +220,4 @@ while R1~=1 && R1~=2 && R1~=3
             disp('Escolha uma opção válida')
     end
 end
+%Criar estrutura de decisão para cado Rfa ou Rfb seja = 0 (um if para Rfa = 0 e um elseif para Rfb = 0) se isso acontecer M = 0
