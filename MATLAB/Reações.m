@@ -1,12 +1,9 @@
-%Pedir força decomposta
-%Calcular momentos primeiro 
-%MRa gera momento em B e MRb gera momento em A
-
+clc; clear;
 %EDUARDO
 CordA_B = [0 0 0; 0 0 0];
 syms Num R1 R2 Ay Ax By Bx Ma Mb
-A = [Ax Ay 0]
-B = [Bx By 0]
+A = [Ax Ay 0];
+B = [Bx By 0];
 while Num ~= 1 & Num ~= 2
     Num = input('Qual o número de componentes de apoio (Máximo 2)? ');
     switch Num 
@@ -41,29 +38,18 @@ while Num ~= 1 & Num ~= 2
                 Rba = CordA_B(2,:) - CordA_B(1,:);
                 Rfa = CordF_M - CordA_B(1,:);
                 Rfb = CordF_M - CordA_B(1,:);
-                    if CordA_B(1,1) == CordA_B(2,1) && CordA_B(1,2) == CordA_B(2,2)
-                        disp('A e B precisão ter coordenadas distintas')
-                    else
-                        fprintf('\n')
-                    end
+                if CordA_B(1,1) == CordA_B(2,1) && CordA_B(1,2) == CordA_B(2,2)
+                    disp('A e B precisão ter coordenadas distintas')
+                else
+                    fprintf('\n')
+                end
             end
         otherwise 
             disp('Escolha uma opção válida')
     end
 end
 %EDUARDO
-
-%TALVEZ SAIA
-An = atand(abs(VR(1,2)/VR(1,1)));
-VC = [F * cosd(An), F * sind(An), 0];
-%TALVEZ SAIA
-
-%TALVEZ SAIA
-DH = input('Determine a distancia horizontal entre a força e o apoio (Em metros): ');
-DV = input('Determine a distancia vertical entre a força e o apoio (Em metros): ');
-%TALVEZ SAIA
-
-while R~=1 && R~=2 && R ~=3
+while R1~=1 && R1~=2 && R1~=3
     R1 = input('Escolha o tipo de apoio em A:\n[1] - Rolete\n[2] - Pino\n[3] - Engaste');
     switch R1
         case 1
@@ -71,30 +57,46 @@ while R~=1 && R~=2 && R ~=3
                 R2 = input('Escolha o tipo de apoio em B:\n[1] - Rolete\n[2] - Pino\n[3] - Engaste\n[4] - Sem apoio em B');
                 switch R2
                     case 1
+                        Ma = 0;
+                        Mb = 0;
                         Ax = 0;
                         Bx = 0;
                         SFy = Ay + By + F(1,2) == 0;
-
-                        SMa = sum(cross(Rfa,F)) + sum(cross(Rba,B)) + M == 0;
-                        SMb = sum(cross(Rfb,F)) + sum(cross(Rab,A)) + M == 0;
-
+                        SMa = sum(cross(Rfa,F)) + sum(cross(Rba,B)) + M + Mb == 0;
+                        SMb = sum(cross(Rfb,F)) + sum(cross(Rab,A)) + M + Ma == 0;
                         [Ay By] = solve([SFy SMa SMb], [Ay By]);
                         Ay = double(Ay);
                         By = double(By);
                         fprintf('TEXTO')
                     case 2
-                        Eq1 = Ay + By + F * sind(An) == 0;
-                        Eq2 = Bx + F * cosd(An) == 0;
-                        M(a) = 0;
-                        M(b) = 0;
+                        Ma = 0;
+                        Mb = 0;
+                        Ax = 0;
+                        SFx = Bx + F(1,1) == 0;
+                        SFy = Ay + By + F(1,2) == 0;
+                        SMa = sum(cross(Rfa,F)) + sum(cross(Rba,B)) + M + Mb == 0;
+                        SMb = sum(cross(Rfb,F)) + sum(cross(Rab,A)) + M + Ma == 0;
+                        [Ay Bx By] = solve([SFx SFy SMa SMb], [Ay Bx By]);
+                        Ay = double(Ay);
+                        Bx = double(Bx);
+                        By = double(By);
+                        fprintf('TEXTO')
                     case 3
-                        Eq1 = Ay + By + F * sind(An) == 0;
-                        Eq2 = Bx + F * cosd(An) == 0;
-                        Mb??? <-------------------------------------------------------------
-                        M(a) = 0;
-                        M(b) = 0;
+                        Ma = 0;
+                        Ax = 0;
+                        SFx = Bx + F(1,1) == 0;
+                        SFy = Ay + By + F(1,2) == 0;
+                        SMa = sum(cross(Rfa,F)) + sum(cross(Rba,B)) + M + Mb == 0;
+                        SMb = sum(cross(Rfb,F)) + sum(cross(Rab,A)) + M + Ma == 0;
+                        [Ay Bx By Mb] = solve([SFx SFy SMa SMb], [Ay Bx By Mb]);
+                        Ay = double(Ay);
+                        Bx = double(Bx);
+                        By = double(By);
+                        Mb = double(Mb);
+                        fprintf('TEXTO')
                     case 4
-                       Eq1 = Ay + F * sind(An) == 0;
+                       Ay = -F(1,2);
+                       fprintf('TEXTO')
                     otherwise
                         disp('Escolha uma opção válida')
                 end
@@ -104,24 +106,48 @@ while R~=1 && R~=2 && R ~=3
                 R2 = input('Escolha o tipo de apoio em B:\n[1] - Rolete\n[2] - Pino\n[3] - Engaste\n[4] - Sem apoio em B');
                 switch R2
                     case 1
-                        Eq1 = Ay + By + F * sind(An) == 0;
-                        Eq2 = Ax + F * cosd(An) == 0;
-                        M(a) = 0;
-                        M(b) = 0;
+                        Ma = 0;
+                        Mb = 0;
+                        Bx = 0;
+                        SFx = Ax + F(1,1) == 0;
+                        SFy = Ay + By + F(1,2) == 0;
+                        SMa = sum(cross(Rfa,F)) + sum(cross(Rba,B)) + M + Mb == 0;
+                        SMb = sum(cross(Rfb,F)) + sum(cross(Rab,A)) + M + Ma == 0;
+                        [Ax Ay By] = solve([SFx SFy SMa SMb], [Ax Ay By]);
+                        Ax = double(Ax);
+                        Ay = double(Ay);
+                        By = double(By);
+                        fprintf('TEXTO')
                     case 2
-                        Eq1 = Ay + By + F * sind(An) == 0;
-                        Rq2 = Ax + Bx + F * cosd(An) == 0;
-                        M(a) = 0;
-                        M(b) = 0;
+                        Ma = 0;
+                        Mb = 0;
+                        SFx = Ax + Bx + F(1,1) == 0;
+                        SFy = Ay + By + F(1,2) == 0;
+                        SMa = sum(cross(Rfa,F)) + sum(cross(Rba,B)) + M + Mb == 0;
+                        SMb = sum(cross(Rfb,F)) + sum(cross(Rab,A)) + M + Ma == 0;
+                        [Ax Ay Bx By] = solve([SFx SFy SMa SMb], [Ax Ay Bx By]);
+                        Ax = double(Ax);
+                        Ay = double(Ay);
+                        Bx = double(Bx);
+                        By = double(By);
+                        fprintf('TEXTO')
                     case 3
-                        Eq1 = Ay + By + F * sind(An) == 0;
-                        Rq2 = Ax + Bx + F * cosd(An) == 0;
-                        Mb??? <-----------------------------------------------------------------
-                        M(a) = 0;
-                        M(b) = 0;
+                        Ma = 0;
+                        SFx = Ax + Bx + F(1,1) == 0;
+                        SFy = Ay + By + F(1,2) == 0;
+                        SMa = sum(cross(Rfa,F)) + sum(cross(Rba,B)) + M + Mb == 0;
+                        SMb = sum(cross(Rfb,F)) + sum(cross(Rab,A)) + M + Ma == 0;
+                        [Ax Ay Bx By Mb] = solve([SFx SFy SMa SMb], [Ax Ay Bx By Mb]);
+                        Ax = double(Ax);
+                        Ay = double(Ay);
+                        Bx = double(Bx);
+                        By = double(By);
+                        Mb = double(Mb);
+                        fprintf('TEXTO')
                     case 4
-                        Eq1 = Ay + F * sind(An) == 0;
-                        Eq2 = Ax + F * cosd(An) == 0;
+                        Ay = -F(1,2);
+                        Ax = -F(1,1);
+                        fprintf('TEXTO')
                     otherwise
                         disp('Escolha uma opção válida')
                 end
@@ -131,30 +157,49 @@ while R~=1 && R~=2 && R ~=3
                 R2 = input('Escolha o tipo de apoio em B:\n[1] - Rolete\n[2] - Pino\n[3] - Engaste\n[4] - Sem apoio em B');
                 switch R2
                     case 1
-                        Eq1 = Ay + By + F * sind(An) == 0;
-                        Eq2 = Ax + F * cosd(An) == 0;
-                        Ma??? <------------------------------------------------------------------------
-                        M(a) = 0;
-                        M(b) = 0;
+                        Mb = 0;
+                        Bx = 0;
+                        SFx = Ax + F(1,1) == 0;
+                        SFy = Ay + By + F(1,2) == 0;
+                        SMa = sum(cross(Rfa,F)) + sum(cross(Rba,B)) + M + Mb == 0;
+                        SMb = sum(cross(Rfb,F)) + sum(cross(Rab,A)) + M + Ma == 0;
+                        [Ax Ay By Ma] = solve([SFx SFy SMa SMb], [Ax Ay By Ma]);
+                        Ax = double(Ax);
+                        Ay = double(Ay);
+                        By = double(By);
+                        Ma = double(Ma);
+                        fprintf('TEXTO')
                     case 2
-                        Eq1 = Ay + By + F * sind(An) == 0;
-                        Eq2 = Ax + Bx + F * cosd(An) == 0;
-                        Ma??? <------------------------------------------------------------------------
-                        M(a) = 0;
-                        M(b) = 0;
+                        Mb = 0;
+                        SFx = Ax + Bx + F(1,1) == 0;
+                        SFy = Ay + By + F(1,2) == 0;
+                        SMa = sum(cross(Rfa,F)) + sum(cross(Rba,B)) + M + Mb == 0;
+                        SMb = sum(cross(Rfb,F)) + sum(cross(Rab,A)) + M + Ma == 0;
+                        [Ax Ay Bx By Ma] = solve([SFx SFy SMa SMb], [Ax Ay Bx By Ma]);
+                        Ax = double(Ax);
+                        Ay = double(Ay);
+                        Bx = double(Bx);
+                        By = double(By);
+                        Ma = double(Ma);
+                        fprintf('TEXTO')
                     case 3
-                        Eq1 = Ay + By + F * sind(An) == 0;
-                        Eq2 = Ax + Bx + F * cosd(An) == 0;
-                        Ma??? <------------------------------------------------------------------------
-                        Mb??? <------------------------------------------------------------------------
-                        M(a) = 0;
-                        M(b) = 0;
+                        SFx = Ax + Bx + F(1,1) == 0;
+                        SFy = Ay + By + F(1,2) == 0;
+                        SMa = sum(cross(Rfa,F)) + sum(cross(Rba,B)) + M + Mb == 0;
+                        SMb = sum(cross(Rfb,F)) + sum(cross(Rab,A)) + M + Ma == 0;
+                        [Ax Ay Bx By Ma Mb] = solve([SFx SFy SMa SMb], [Ax Ay Bx By Ma Mb]);
+                        Ax = double(Ax);
+                        Ay = double(Ay);
+                        Bx = double(Bx);
+                        By = double(By);
+                        Ma = double(Ma);
+                        Mb = double(Mb);
+                        fprintf('TEXTO')
                     case 4
-                        Eq1 = Ay + F * sind(An) == 0;
-                        Eq2 = Ax + F * cosd(An) == 0;
-                        M(a) = 0;
-                        M(b) = 0;
-                        Ma??? <---------------------------------------------------------------------
+                        Ay = -F(1,2);
+                        Ax = -F(1,1);
+                        Ma = sum(cross(Rfa,F)) + M;
+                        fprintf('TEXTO')
                     otherwise
                         disp('Escolha uma opção válida')
                 end
