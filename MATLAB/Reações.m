@@ -1,7 +1,7 @@
 clc; clear;
 %EDUARDO
 CordA_B = [0 0 0; 0 0 0];
-syms NumR R1 R2 Ay Ax By Bx Ma Mb Rao Rbo Rfo
+syms NumR A1 A2 Ay Ax By Bx Ma Mb Rao Rbo Rfo
 A = [Ax Ay 0];
 B = [Bx By 0];
 while NumR ~= 1 && NumR ~= 2
@@ -49,13 +49,13 @@ while NumR ~= 1 && NumR ~= 2
     end
 end
 %EDUARDO
-while R1~=1 && R1~=2 && R1~=3
-    R1 = input('Escolha o tipo de apoio em A:\n[1] - Rolete\n[2] - Pino\n[3] - Engaste');
-    switch R1
+while A1~=1 && A1~=2 && A1~=3
+    A1 = input('Escolha o tipo de apoio em A:\n[1] - Rolete\n[2] - Pino\n[3] - Engaste');
+    switch A1
         case 1
-            while R2~=1 && R2~=2 && R2~=3 && R2~=4 || NumR + 3 == R2
-                R2 = input('Escolha o tipo de apoio em B:\n[1] - Rolete\n[2] - Pino\n[3] - Engaste\n[4] - Sem apoio em B');
-                switch R2
+            while A2~=1 && A2~=2 && A2~=3 && A2~=4 || NumR + 3 == A2
+                A2 = input('Escolha o tipo de apoio em B:\n[1] - Rolete\n[2] - Pino\n[3] - Engaste\n[4] - Sem apoio em B');
+                switch A2
                     case 1
                         Ma = 0;
                         Mb = 0;
@@ -130,9 +130,9 @@ while R1~=1 && R1~=2 && R1~=3
                 end
             end
         case 2
-            while R2~=1 && R2~=2 && R2~=3 && R2~=4 || NumR + 3 == R2
-                R2 = input('Escolha o tipo de apoio em B:\n[1] - Rolete\n[2] - Pino\n[3] - Engaste\n[4] - Sem apoio em B');
-                switch R2
+            while A2~=1 && A2~=2 && A2~=3 && A2~=4 || NumR + 3 == A2
+                A2 = input('Escolha o tipo de apoio em B:\n[1] - Rolete\n[2] - Pino\n[3] - Engaste\n[4] - Sem apoio em B');
+                switch A2
                     case 1
                         Ma = 0;
                         Mb = 0;
@@ -212,9 +212,9 @@ while R1~=1 && R1~=2 && R1~=3
                 end
             end
         case 3
-            while R2~=1 && R2~=2 && R2~=3 && R2~=4 || NumR + 3 == R2
-                R2 = input('Escolha o tipo de apoio em B:\n[1] - Rolete\n[2] - Pino\n[3] - Engaste\n[4] - Sem apoio em B');
-                switch R2
+            while A2~=1 && A2~=2 && A2~=3 && A2~=4 || NumR + 3 == A2
+                A2 = input('Escolha o tipo de apoio em B:\n[1] - Rolete\n[2] - Pino\n[3] - Engaste\n[4] - Sem apoio em B');
+                switch A2
                     case 1
                         Mb = 0;
                         Bx = 0;
