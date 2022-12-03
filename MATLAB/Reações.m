@@ -30,8 +30,8 @@ while NumR ~= 1 && NumR ~= 2
                 %VEM DO CÓDIGO DO DANIEL
                 CordF_M = [0 0 0];
                 F = [X Y 0];
-                F(1,1)
-                F(1,2)
+                F(1)
+                F(2)
                 M (momento) <----------------------------------------
                 %VEM DO CÓDIGO DO DANIEL
                 Rab = CordA_B(1,:) - CordA_B(2,:);
