@@ -2,5 +2,9 @@
     "cSpell.language": "en,pt,pt-BR",
     "cSpell.enableFiletypes": [
         "matlab"
+    ],
+    "cSpell.words": [
+        "disp",
+        "fprintf"
     ]
 }
