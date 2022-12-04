@@ -126,7 +126,7 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         Ay = double(Ay);
                         Bx = double(Bx);
                         By = double(By);
-                        fprintf('Rolete A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m\nRolete B:\n\tBx = %.2f N\n\tBy = %.2f N\n\tMb = %.2f N*m', Ax, Ay, Ma, Bx, By, Mb)
+                        fprintf('Rolete A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m\nPino B:\n\tBx = %.2f N\n\tBy = %.2f N\n\tMb = %.2f N*m', Ax, Ay, Ma, Bx, By, Mb)
                     case 3
                         Ma = 0;
                         Ax = 0;
@@ -150,7 +150,7 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         Bx = double(Bx);
                         By = double(By);
                         Mb = double(Mb);
-                        fprintf('Rolete A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m\nRolete B:\n\tBx = %.2f N\n\tBy = %.2f N\n\tMb = %.2f N*m', Ax, Ay, Ma, Bx, By, Mb)
+                        fprintf('Rolete A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m\nEngaste B:\n\tBx = %.2f N\n\tBy = %.2f N\n\tMb = %.2f N*m', Ax, Ay, Ma, Bx, By, Mb)
                     case 4
 
                         if NumR == 1
@@ -197,7 +197,7 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         Ax = double(Ax);
                         Ay = double(Ay);
                         By = double(By);
-                        fprintf('Rolete A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m\nRolete B:\n\tBx = %.2f N\n\tBy = %.2f N\n\tMb = %.2f N*m', Ax, Ay, Ma, Bx, By, Mb)
+                        fprintf('Pino A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m\nRolete B:\n\tBx = %.2f N\n\tBy = %.2f N\n\tMb = %.2f N*m', Ax, Ay, Ma, Bx, By, Mb)
                     case 2
                         Ma = 0;
                         Mb = 0;
@@ -221,7 +221,7 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         Ay = double(Ay);
                         Bx = double(Bx);
                         By = double(By);
-                        fprintf('Rolete A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m\nRolete B:\n\tBx = %.2f N\n\tBy = %.2f N\n\tMb = %.2f N*m', Ax, Ay, Ma, Bx, By, Mb)
+                        fprintf('Pino A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m\nPino B:\n\tBx = %.2f N\n\tBy = %.2f N\n\tMb = %.2f N*m', Ax, Ay, Ma, Bx, By, Mb)
                     case 3
                         Ma = 0;
                         SFx = Ax + Bx + F(1, 1) == 0;
@@ -248,14 +248,14 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         Bx = double(Bx);
                         By = double(By);
                         Mb = double(Mb);
-                        fprintf('Rolete A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m\nRolete B:\n\tBx = %.2f N\n\tBy = %.2f N\n\tMb = %.2f N*m', Ax, Ay, Ma, Bx, By, Mb)
+                        fprintf('Pino A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m\nEngaste B:\n\tBx = %.2f N\n\tBy = %.2f N\n\tMb = %.2f N*m', Ax, Ay, Ma, Bx, By, Mb)
                     case 4
 
                         if NumR == 1
                             Ma = 0;
                             Ay = -F(1, 2);
                             Ax = -F(1, 1);
-                            fprintf('Rolete A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m', Ax, Ay, Ma)
+                            fprintf('Pino A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m', Ax, Ay, Ma)
                         else
                             disp('Escolha uma opção válida')
                         end
@@ -295,7 +295,7 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         Ay = double(Ay);
                         By = double(By);
                         Ma = double(Ma);
-                        fprintf('Rolete A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m\nRolete B:\n\tBx = %.2f N\n\tBy = %.2f N\n\tMb = %.2f N*m', Ax, Ay, Ma, Bx, By, Mb)
+                        fprintf('Engaste A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m\nRolete B:\n\tBx = %.2f N\n\tBy = %.2f N\n\tMb = %.2f N*m', Ax, Ay, Ma, Bx, By, Mb)
                     case 2
                         Mb = 0;
                         SFx = Ax + Bx + F(1, 1) == 0;
@@ -322,7 +322,7 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         Bx = double(Bx);
                         By = double(By);
                         Ma = double(Ma);
-                        fprintf('Rolete A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m\nRolete B:\n\tBx = %.2f N\n\tBy = %.2f N\n\tMb = %.2f N*m', Ax, Ay, Ma, Bx, By, Mb)
+                        fprintf('Engaste A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m\nPino B:\n\tBx = %.2f N\n\tBy = %.2f N\n\tMb = %.2f N*m', Ax, Ay, Ma, Bx, By, Mb)
                     case 3
                         SFx = Ax + Bx + F(1, 1) == 0;
                         SFy = Ay + By + F(1, 2) == 0;
@@ -367,14 +367,14 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         By = double(By);
                         Ma = double(Ma);
                         Mb = double(Mb);
-                        fprintf('Rolete A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m\nRolete B:\n\tBx = %.2f N\n\tBy = %.2f N\n\tMb = %.2f N*m', Ax, Ay, Ma, Bx, By, Mb)
+                        fprintf('Engaste A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m\nEngaste B:\n\tBx = %.2f N\n\tBy = %.2f N\n\tMb = %.2f N*m', Ax, Ay, Ma, Bx, By, Mb)
                     case 4
 
                         if NumR == 1
                             Ay = -F(1, 2);
                             Ax = -F(1, 1);
                             Ma = sum(cross(Rfa, F)) + M;
-                            fprintf('Rolete A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m', Ax, Ay, Ma)
+                            fprintf('Engaste A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m', Ax, Ay, Ma)
                         else
                             disp('Escolha uma opção válida')
                         end
