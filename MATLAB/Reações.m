@@ -25,7 +25,37 @@ while nF < 0
 
 end
 
-[F, M, CordF_M] = Sis_Eq(nF, nM, CordAl);
+try
+    [F, M, CordF_M] = Sis_Eq(nF, nM, CordAl);
+catch
+    fprintf('[F, M, CordF_M] = Sis_Eq(nF, nM, CordAl)\nEssa função calcula a força e o momento equivalente\nde um número de forças determinado pelo usuário.\n\nInputs:\n\t\tnF      --> Número de forças atuando no sistema (Número)\n\t\tnM      --> Número de momentos atuando no sistema (Número)\n\t\tCordAl  --> Coordenadas de um ponto aleatório no plano bidimensional (Vetor)\n\nOutputs:\n\t\tF       --> Vetor força resultante do sistema (Vetor)\n\t\tM       --> Momento resultante do sistema (Número)\n\t\tCordF_M --> Coordenadas de aplicação da força e do momento equivalentes (Vetor)')
+    X = input('Insira o valor da coordenada X do ponto de referência: ');
+    Y = input('Insira o valor da coordenada Y do ponto de referência: ');
+    CordAl = [X Y 0];
+    nM = -1;
+
+    while nM < 0
+        nM = input('Quantas momentos atuam no sistema (N*m)? ');
+
+        if nM < 0
+            disp('Este valor não deve ser negativo')
+        end
+
+    end
+
+    nF = -1;
+
+    while nF < 0
+        nF = input('Quantas forças atuam no sistema (N)? ');
+
+        if nF < 0
+            disp('Este valor não deve ser negativo')
+        end
+
+    end
+
+end
+
 %EDUARDO
 CordA_B = [0 0 0; 0 0 0];
 syms NumR A1 A2 Ay Ax By Bx Ma Mb Rao Rbo Rfo
