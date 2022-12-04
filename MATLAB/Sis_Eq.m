@@ -12,7 +12,7 @@ function [F, M, CordF_M] = Sis_Eq(nF, nM, CordAl)
     %       F       --> Vetor força resultante do sistema (Vetor)
     %       M       --> Momento resultante do sistema (Numero)
     %       CordF_M --> Coordenadas de aplicação da força e do momento equivalentes (Vetor)
-    if ~isnumeric(nF) || ~isnumeric(nM) || ~isnumeric(CordF_M)
+    if ~isnumeric(nF) || ~isnumeric(nM) || ~isnumeric(CordAl)
         help Sis_Eq
         error('nM deve ser um número')
     end
