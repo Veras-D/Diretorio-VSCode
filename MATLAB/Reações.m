@@ -26,9 +26,6 @@ while nF < 0
 end
 
 [F, M, CordF_M] = Sis_Eq(nF, nM, CordAl);
-disp(F)
-disp(M)
-disp(CordF_M)
 %EDUARDO
 CordA_B = [0 0 0; 0 0 0];
 syms NumR A1 A2 Ay Ax By Bx Ma Mb Rao Rbo Rfo
