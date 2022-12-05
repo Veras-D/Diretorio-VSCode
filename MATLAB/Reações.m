@@ -485,14 +485,14 @@ function [F, M, CordF_M] = Sis_Eq(nF, nM, CordAl)
             MP1 = MP1 + MP;
         end
 
-        M = MP1 + sum(MS);
+    end
 
-        if M / F(2) == 0
-            CordF_M = [0 M / F(1) 0] + CordAl;
-        else
-            CordF_M = [M / F(2) 0 0] + CordAl;
-        end
+    M = MP1 + sum(MS);
 
+    if M / F(2) == 0
+        CordF_M = [0 M / F(1) 0] + CordAl;
+    else
+        CordF_M = [M / F(2) 0 0] + CordAl;
     end
 
 end
