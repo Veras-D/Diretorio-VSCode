@@ -25,6 +25,8 @@ while nF < 0
 
 end
 
+[F, M, CordF_M] = Sis_Eq(nF, nM, CordAl);
+
 try
     [F, M, CordF_M] = Sis_Eq(nF, nM, CordAl);
 catch
@@ -54,6 +56,7 @@ catch
 
     end
 
+    [F, M, CordF_M] = Sis_Eq(nF, nM, CordAl);
 end
 
 %EDUARDO
