@@ -1,5 +1,5 @@
 clc; clear;
-fprintf('Programa para calcular reações de até dois apoios num plano bidimensional, para \numa quantidade indefinida de forças e momentos, todos os valores devem ser \nexpressos no SI. São adotados como referência a direção Y do campo \ngravitacional como negativa, a direção esquerda para direita como positiva para \no eixo x e o sentido anti-horário como positivo para o momento, as hipóteses \nde reações estarão sempre apontando para o sentido positivo do eixo.')
+fprintf('Programa para calcular reações de até dois apoios num plano bidimensional, para \numa quantidade indefinida de forças e momentos, todos os valores devem ser \nexpressos no SI. São adotados como referência a direção Y do campo \ngravitacional como negativa, a direção esquerda para direita como positiva para \no eixo x e o sentido anti-horário como positivo para o momento, as hipóteses \nde reações estarão sempre apontando para o sentido positivo do eixo.\n')
 X = input('Insira o valor da coordenada X do ponto de referência: ');
 Y = input('Insira o valor da coordenada Y do ponto de referência: ');
 CordAl = [X Y 0];
@@ -274,7 +274,7 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
 
                         Raf = CordA_B(1, :) - CordF_M;
                         Rbf = CordA_B(2, :) - CordF_M;
-                        SMf = sum(cross(Raf, A)) + sun(cross(Raf, B)) + Mb + Ma == 0;
+                        SMf = sum(cross(Raf, A)) + sum(cross(Raf, B)) + Mb + Ma == 0;
                         [Ax, Ay, Bx, By, Mb] = solve([SFx SFy SMa SMb SMf], [Ax Ay Bx By Mb]);
                         Ax = double(Ax);
                         Ay = double(Ay);
@@ -348,7 +348,7 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
 
                         Raf = CordA_B(1, :) - CordF_M;
                         Rbf = CordA_B(2, :) - CordF_M;
-                        SMf = sum(cross(Raf, A)) + sun(cross(Raf, B)) + Ma + Mb == 0;
+                        SMf = sum(cross(Raf, A)) + sum(cross(Raf, B)) + Ma + Mb == 0;
                         [Ax, Ay, Bx, By, Ma] = solve([SFx SFy SMa SMb SMf], [Ax Ay Bx By Ma]);
                         Ax = double(Ax);
                         Ay = double(Ay);
@@ -374,7 +374,7 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
 
                         Raf = CordA_B(1, :) - CordF_M;
                         Rbf = CordA_B(2, :) - CordF_M;
-                        SMf = sum(cross(Raf, A)) + sun(cross(Raf, B)) + Ma + Mb == 0;
+                        SMf = sum(cross(Raf, A)) + sum(cross(Raf, B)) + Ma + Mb == 0;
                         
                         while Rao == 0 || Rbo == 0 || Rfo == 0
                             Cord_O = [0 0 0];
