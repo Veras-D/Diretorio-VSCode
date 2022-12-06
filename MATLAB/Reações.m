@@ -60,9 +60,9 @@ catch
 end
 
 %EDUARDO
-CordA = [0 0 0];
-CordB = [0 0 0];
-syms NumR A1 A2 Ay Ax By Bx Ma Mb Rao Rbo Rfo
+syms NumR A1 A2 Xa Ya Xb Yb Ay Ax By Bx Ma Mb Rao Rbo Rfo Rfa
+CordA = [Xa Ya 0];
+CordB = [Xb Yb 0];
 A = [Ax Ay 0];
 B = [Bx By 0];
 
@@ -71,8 +71,8 @@ while NumR ~= 1 && NumR ~= 2
 
     switch NumR
         case 1
-            CordA(1) = input('Insira o valor da coordenada X do componente de reação A: ');
-            CordA(2) = input('Insira o valor da coordenada Y do componente de reação A: ');
+            Xa = input('Insira o valor da coordenada X do componente de reação A: ');
+            Ya = input('Insira o valor da coordenada Y do componente de reação A: ');
             Bx = 0;
             By = 0;
             Mb = 0;
@@ -80,10 +80,10 @@ while NumR ~= 1 && NumR ~= 2
         case 2
 
             while CordA(1) == CordB(1) && CordA(2) == CordB(2)
-                CordA(1) = input('Insira o valor da coordenada X do componente de reação A: ');
-                CordA(2) = input('Insira o valor da coordenada Y do componente de reação A: ');
-                CordB(1) = input('Insira o valor da coordenada X do componente de reação B: ');
-                CordB(2) = input('Insira o valor da coordenada Y do componente de reação B: ');
+                Xa = input('Insira o valor da coordenada X do componente de reação A: ');
+                Ya = input('Insira o valor da coordenada Y do componente de reação A: ');
+                Xb = input('Insira o valor da coordenada X do componente de reação B: ');
+                Yb = input('Insira o valor da coordenada Y do componente de reação B: ');
                 Rab = CordA - CordB;
                 Rba = CordB - CordA;
                 Rfa = CordF_M - CordA;
