@@ -28,7 +28,7 @@ end
 [F, M, CordF_M] = Sis_Eq(nF, nM, CordAl);
 
 %EDUARDO
-syms NumR A1 A2 Xa Ya Xb Yb Ay Ax By Bx Ma Mb 
+syms NumR A1 A2 Ay Ax By Bx Ma Mb 
 Rao = zeros(1,3);
 Rbo = zeros(1,3);
 Rfo = zeros(1,3);
@@ -36,16 +36,16 @@ Rfa = zeros(1,3);
 Rfb = zeros(1,3);
 Rba = zeros(1,3);
 Rab = zeros(1,3);
-CordA = [Xa Ya 0];
-CordB = [Xb Yb 0];
+CordA = zeros(1,3);
+CordB = zeros(1,3);
 
 while NumR ~= 1 && NumR ~= 2
     NumR = input('Qual o número de componentes de apoio (Máximo 2)? ');
 
     switch NumR
         case 1
-            Xa = input('Insira o valor da coordenada X do componente de reação A: ');
-            Ya = input('Insira o valor da coordenada Y do componente de reação A: ');
+            CordA(1) = input('Insira o valor da coordenada X do componente de reação A: ');
+            CordA(2) = input('Insira o valor da coordenada Y do componente de reação A: ');
             Bx = 0;
             By = 0;
             Mb = 0;
@@ -53,10 +53,10 @@ while NumR ~= 1 && NumR ~= 2
         case 2
 
             while CordA(1) == CordB(1) && CordA(2) == CordB(2)
-                Xa = input('Insira o valor da coordenada X do componente de reação A: ');
-                Ya = input('Insira o valor da coordenada Y do componente de reação A: ');
-                Xb = input('Insira o valor da coordenada X do componente de reação B: ');
-                Yb = input('Insira o valor da coordenada Y do componente de reação B: ');
+                CordA(1) = input('Insira o valor da coordenada X do componente de reação A: ');
+                CordA(2) = input('Insira o valor da coordenada Y do componente de reação A: ');
+                CordB(1) = input('Insira o valor da coordenada X do componente de reação B: ');
+                CordB(2) = input('Insira o valor da coordenada Y do componente de reação B: ');
                 Rab = CordA - CordB;
                 Rba = CordB - CordA;
                 Rfa = CordF_M - CordA;
@@ -366,7 +366,7 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
 
                         end
 
-                        SMo = Rao(1) * A(2) + Rao(2) * A(1) + Rbo(1) * B(2) + Rbo(2) * B(1) + sum(cross(Rfo, F)) + Ma + Mb + M == 0;
+                        SMo = sum(cross(Rao,[Ax Ay 0])) + sum(cross(Rbo,[Bx By 0])) + sum(cross(Rfo, F)) + Ma + Mb + M == 0;
                         [Ax, Ay, Bx, By, Ma, Mb] = solve([SFx SFy SMa SMb SMf SMo], [Ax Ay Bx By Ma Mb]);
                         Ax = double(Ax);
                         Ay = double(Ay);
