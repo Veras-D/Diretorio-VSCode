@@ -375,7 +375,7 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         Raf = CordA_B(1, :) - CordF_M;
                         Rbf = CordA_B(2, :) - CordF_M;
                         SMf = sum(cross(Raf, A)) + sun(cross(Raf, B)) + Ma + Mb == 0;
-
+                        
                         while Rao == 0 || Rbo == 0 || Rfo == 0
                             Cord_O = [0 0 0];
                             Cord_O(1) = input('Insira um novo valor da coordenada X para um ponto O: ');
