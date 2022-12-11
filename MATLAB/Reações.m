@@ -28,7 +28,10 @@ end
 [F, M, CordF_M] = Sis_Eq(nF, nM, CordAl);
 
 %EDUARDO
-syms NumR A1 A2 Ay Ax By Bx Ma Mb 
+syms Ay Ax By Bx Ma Mb 
+NumR = 0;
+A1 = 0;
+A2 = 0;
 Rao = zeros(1,3);
 Rbo = zeros(1,3);
 Rfo = zeros(1,3);
@@ -94,13 +97,13 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         Bx = 0;
                         SFy = Ay + By + F(1, 2) == 0;
 
-                        if Rfa == 0
+                        if sum(Rfa) == 0
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + Mb == 0;
                         else
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + M + Mb == 0;
                         end
 
-                        if Rfb == 0
+                        if sum(Rfb) == 0
                             SMb = sum(cross(Rfb, F)) + sum(cross(Rab, [Ax Ay 0])) + Ma == 0;
                         else
                             SMb = sum(cross(Rfb, F)) + sum(cross(Rab, [Ax Ay 0])) + M + Ma == 0;
@@ -117,13 +120,13 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         SFx = Bx + F(1, 1) == 0;
                         SFy = Ay + By + F(1, 2) == 0;
 
-                        if Rfa == 0
+                        if sum(Rfa) == 0
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + Mb == 0;
                         else
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + M + Mb == 0;
                         end
 
-                        if Rfb == 0
+                        if sum(Rfb) == 0
                             SMb = sum(cross(Rfb, F)) + sum(cross(Rab, [Ax Ay 0])) + Ma == 0;
                         else
                             SMb = sum(cross(Rfb, F)) + sum(cross(Rab, [Ax Ay 0])) + M + Ma == 0;
@@ -140,13 +143,13 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         SFx = Bx + F(1, 1) == 0;
                         SFy = Ay + By + F(1, 2) == 0;
 
-                        if Rfa == 0
+                        if sum(Rfa) == 0
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + Mb == 0;
                         else
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + M + Mb == 0;
                         end
 
-                        if Rfb == 0
+                        if sum(Rfb) == 0
                             SMb = sum(cross(Rfb, F)) + sum(cross(Rab, [Ax Ay 0])) + Ma == 0;
                         else
                             SMb = sum(cross(Rfb, F)) + sum(cross(Rab, [Ax Ay 0])) + M + Ma == 0;
@@ -188,13 +191,13 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         SFx = Ax + F(1, 1) == 0;
                         SFy = Ay + By + F(1, 2) == 0;
 
-                        if Rfa == 0
+                        if sum(Rfa) == 0
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + Mb == 0;
                         else
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + M + Mb == 0;
                         end
 
-                        if Rfb == 0
+                        if sum(Rfb) == 0
                             SMb = sum(cross(Rfb, F)) + sum(cross(Rab, [Ax Ay 0])) + Ma == 0;
                         else
                             SMb = sum(cross(Rfb, F)) + sum(cross(Rab, [Ax Ay 0])) + M + Ma == 0;
@@ -211,13 +214,13 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         SFx = Ax + Bx + F(1, 1) == 0;
                         SFy = Ay + By + F(1, 2) == 0;
 
-                        if Rfa == 0
+                        if sum(Rfa) == 0
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + Mb == 0;
                         else
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + M + Mb == 0;
                         end
 
-                        if Rfb == 0
+                        if sum(Rfb) == 0
                             SMb = sum(cross(Rfb, F)) + sum(cross(Rab, [Ax Ay 0])) + Ma == 0;
                         else
                             SMb = sum(cross(Rfb, F)) + sum(cross(Rab, [Ax Ay 0])) + M + Ma == 0;
@@ -234,13 +237,13 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         SFx = Ax + Bx + F(1, 1) == 0;
                         SFy = Ay + By + F(1, 2) == 0;
 
-                        if Rfa == 0
+                        if sum(Rfa) == 0
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + Mb == 0;
                         else
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + M + Mb == 0;
                         end
 
-                        if Rfb == 0
+                        if sum(Rfb) == 0
                             SMb = sum(cross(Rfb, F)) + sum(cross(Rab, [Ax Ay 0])) + Ma == 0;
                         else
                             SMb = sum(cross(Rfb, F)) + sum(cross(Rab, [Ax Ay 0])) + M + Ma == 0;
@@ -285,13 +288,13 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         SFx = Ax + F(1, 1) == 0;
                         SFy = Ay + By + F(1, 2) == 0;
 
-                        if Rfa == 0
+                        if sum(Rfa) == 0
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + Mb == 0;
                         else
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + M + Mb == 0;
                         end
 
-                        if Rfb == 0
+                        if sum(Rfb) == 0
                             SMb = sum(cross(Rfb, F)) + sum(cross(Rab, [Ax Ay 0])) + Ma == 0;
                         else
                             SMb = sum(cross(Rfb, F)) + sum(cross(Rab, [Ax Ay 0])) + M + Ma == 0;
@@ -308,13 +311,13 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         SFx = Ax + Bx + F(1, 1) == 0;
                         SFy = Ay + By + F(1, 2) == 0;
 
-                        if Rfa == 0
+                        if sum(Rfa) == 0
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + Mb == 0;
                         else
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + M + Mb == 0;
                         end
 
-                        if Rfb == 0
+                        if sum(Rfb) == 0
                             SMb = sum(cross(Rfb, F)) + sum(cross(Rab, [Ax Ay 0])) + Ma == 0;
                         else
                             SMb = sum(cross(Rfb, F)) + sum(cross(Rab, [Ax Ay 0])) + M + Ma == 0;
@@ -334,13 +337,13 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         SFx = Ax + Bx + F(1, 1) == 0;
                         SFy = Ay + By + F(1, 2) == 0;
 
-                        if Rfa == 0
+                        if sum(Rfa) == 0
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + Mb == 0;
                         else
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + M + Mb == 0;
                         end
 
-                        if Rfb == 0
+                        if sum(Rfb) == 0
                             SMb = sum(cross(Rfb, F)) + sum(cross(Rab, [Ax Ay 0])) + Ma == 0;
                         else
                             SMb = sum(cross(Rfb, F)) + sum(cross(Rab, [Ax Ay 0])) + M + Ma == 0;
@@ -367,7 +370,9 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         end
 
                         SMo = sum(cross(Rao,[Ax Ay 0])) + sum(cross(Rbo,[Bx By 0])) + sum(cross(Rfo, F)) + Ma + Mb + M == 0;
-                        [Ax, Ay, Bx, By, Ma, Mb] = solve([SFx SFy SMa SMb SMf SMo], [Ax Ay Bx By Ma Mb]);
+                        var = [Ax Ay Bx By Ma Mb];
+                        eqs = [SFx SFy SMa SMb SMf SMo];
+                        [Ax, Ay, Bx, By, Ma, Mb] = solve(eqs, var);
                         Ax = double(Ax);
                         Ay = double(Ay);
                         Bx = double(Bx);
