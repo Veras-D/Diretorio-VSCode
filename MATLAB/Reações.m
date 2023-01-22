@@ -6,7 +6,7 @@ CordAl = [X Y 0];
 nM = -1;
 
 while nM < 0
-    nM = input('Quantas momentos atuam no sistema (N*m)? ');
+    nM = input('Quantos momentos atuam no sistema (N*m)? ');
 
     if nM < 0
         disp('Este valor não deve ser negativo')
@@ -20,7 +20,7 @@ while nF < 0
     nF = input('Quantas forças atuam no sistema (N)? ');
 
     if nF < 0
-        disp('Este valor não deve ser negativo')
+        disp('Este valor não deve ser negativo') 
     end
 
 end
@@ -32,6 +32,8 @@ syms Ay Ax By Bx Ma Mb
 NumR = 0;
 A1 = 0;
 A2 = 0;
+Fx = F(1);
+Fy = F(2);
 Rao = zeros(1,3);
 Rbo = zeros(1,3);
 Rfo = zeros(1,3);
@@ -61,9 +63,17 @@ while NumR ~= 1 && NumR ~= 2
                 CordB(1) = input('Insira o valor da coordenada X do componente de reação B: ');
                 CordB(2) = input('Insira o valor da coordenada Y do componente de reação B: ');
                 Rab = CordA - CordB;
+                Rabx = Rab(1);
+                Raby = Rab(2);
                 Rba = CordB - CordA;
+                Rbax = Rba(1);
+                Rbay = Rba(2);
                 Rfa = CordF_M - CordA;
+                Rfax = Rfa(1);
+                Rfay = Rfa(2);
                 Rfb = CordF_M - CordB;
+                Rfbx = Rfb(1);
+                Rfby = Rfb(2);
 
                 if CordA(1) == CordB(1) && CordA(2) == CordB(2)
                     disp('A e B precisão ter coordenadas distintas')
@@ -95,7 +105,7 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         Mb = 0;
                         Ax = 0;
                         Bx = 0;
-                        SFy = Ay + By + F(1, 2) == 0;
+                        SFy = Ay + By + Fy == 0;
 
                         if sum(Rfa) == 0
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + Mb == 0;
@@ -117,8 +127,8 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         Ma = 0;
                         Mb = 0;
                         Ax = 0;
-                        SFx = Bx + F(1, 1) == 0;
-                        SFy = Ay + By + F(1, 2) == 0;
+                        SFx = Bx + Fx == 0;
+                        SFy = Ay + By + Fy == 0;
 
                         if sum(Rfa) == 0
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + Mb == 0;
@@ -140,8 +150,8 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                     case 3
                         Ma = 0;
                         Ax = 0;
-                        SFx = Bx + F(1, 1) == 0;
-                        SFy = Ay + By + F(1, 2) == 0;
+                        SFx = Bx + Fx == 0;
+                        SFy = Ay + By + Fy == 0;
 
                         if sum(Rfa) == 0
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + Mb == 0;
@@ -166,7 +176,7 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         if NumR == 1
                             Ax = 0;
                             Ma = 0;
-                            Ay = -F(1, 2);
+                            Ay = -Fy;
                             fprintf('Rolete A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m', Ax, Ay, Ma)
                         else
                             disp('Escolha uma opção válida')
@@ -188,8 +198,8 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         Ma = 0;
                         Mb = 0;
                         Bx = 0;
-                        SFx = Ax + F(1, 1) == 0;
-                        SFy = Ay + By + F(1, 2) == 0;
+                        SFx = Ax + Fx == 0;
+                        SFy = Ay + By + Fy == 0;
 
                         if sum(Rfa) == 0
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + Mb == 0;
@@ -211,8 +221,8 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                     case 2
                         Ma = 0;
                         Mb = 0;
-                        SFx = Ax + Bx + F(1, 1) == 0;
-                        SFy = Ay + By + F(1, 2) == 0;
+                        SFx = Ax + Bx + Fx == 0;
+                        SFy = Ay + By + Fy == 0;
 
                         if sum(Rfa) == 0
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + Mb == 0;
@@ -234,8 +244,8 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         fprintf('Pino A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m\nPino B:\n\tBx = %.2f N\n\tBy = %.2f N\n\tMb = %.2f N*m', Ax, Ay, Ma, Bx, By, Mb)
                     case 3
                         Ma = 0;
-                        SFx = Ax + Bx + F(1, 1) == 0;
-                        SFy = Ay + By + F(1, 2) == 0;
+                        SFx = Ax + Bx + Fx == 0;
+                        SFy = Ay + By + Fy == 0;
 
                         if sum(Rfa) == 0
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + Mb == 0;
@@ -263,8 +273,8 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
 
                         if NumR == 1
                             Ma = 0;
-                            Ay = -F(1, 2);
-                            Ax = -F(1, 1);
+                            Ay = -Fy;
+                            Ax = -Fx;
                             fprintf('Pino A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m', Ax, Ay, Ma)
                         else
                             disp('Escolha uma opção válida')
@@ -285,8 +295,8 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                     case 1
                         Mb = 0;
                         Bx = 0;
-                        SFx = Ax + F(1, 1) == 0;
-                        SFy = Ay + By + F(1, 2) == 0;
+                        SFx = Ax + Fx == 0;
+                        SFy = Ay + By + Fy == 0;
 
                         if sum(Rfa) == 0
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + Mb == 0;
@@ -308,8 +318,8 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         fprintf('Engaste A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m\nRolete B:\n\tBx = %.2f N\n\tBy = %.2f N\n\tMb = %.2f N*m', Ax, Ay, Ma, Bx, By, Mb)
                     case 2
                         Mb = 0;
-                        SFx = Ax + Bx + F(1, 1) == 0;
-                        SFy = Ay + By + F(1, 2) == 0;
+                        SFx = Ax + Bx + Fx == 0;
+                        SFy = Ay + By + Fy == 0;
 
                         if sum(Rfa) == 0
                             SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + Mb == 0;
@@ -334,32 +344,43 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         Ma = double(Ma);
                         fprintf('Engaste A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m\nPino B:\n\tBx = %.2f N\n\tBy = %.2f N\n\tMb = %.2f N*m', Ax, Ay, Ma, Bx, By, Mb)
                     case 3
-                        SFx = Ax + Bx + F(1, 1) == 0;
-                        SFy = Ay + By + F(1, 2) == 0;
+                        SFx = Ax + Bx + Fx == 0;
+                        SFy = Ay + By + Fy == 0;
 
                         if sum(Rfa) == 0
-                            SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + Mb == 0;
+                            SMa = (Fy * Rfax) - (Fx * Rfay) + (By * Rbax) - (Bx * Rbay)  + Mb == 0;
                         else
-                            SMa = sum(cross(Rfa, F)) + sum(cross(Rba, [Bx By 0])) + M + Mb == 0;
+                            SMa = (Fy * Rfax) - (Fx * Rfay) + (By * Rbax) - (Bx * Rbay) + M + Mb == 0;
                         end
 
                         if sum(Rfb) == 0
-                            SMb = sum(cross(Rfb, F)) + sum(cross(Rab, [Ax Ay 0])) + Ma == 0;
+                            SMb = (Fy * Rfbx) - (Fx * Rfby) + (Ay * Rabx) - (Ax * Raby) + Ma == 0;
                         else
-                            SMb = sum(cross(Rfb, F)) + sum(cross(Rab, [Ax Ay 0])) + M + Ma == 0;
+                            SMb = (Fy * Rfbx) - (Fx * Rfby) + (Ay * Rabx) - (Ax * Raby) + M + Ma == 0;
                         end
 
                         Raf = CordA - CordF_M;
+                        Rafx = Raf(1);
+                        Rafy = Raf(2);
                         Rbf = CordB - CordF_M;
-                        SMf = sum(cross(Raf, [Ax Ay 0])) + sum(cross(Raf, [Bx By 0])) + Ma + Mb == 0;
+                        Rbfx = Rbf(1);
+                        Rbfy = Rbf(2);
+
+                        SMf = (Ay * Rafx) - (Ax * Rafy) + (By * Rbfx) - (Bx * Rbfy) + Ma + Mb == 0;
                         
                         while sum(Rao) == 0 || sum(Rbo) == 0 || sum(Rfo) == 0
                             Cord_O = [0 0 0];
                             Cord_O(1) = input('Insira um novo valor da coordenada X para um ponto O: ');
                             Cord_O(2) = input('Insira um novo valor da coordenada Y para um ponto O: ');
                             Rao = CordA - Cord_O;
+                            Raox = Rao(1);
+                            Raoy = Rao(2);
                             Rbo = CordB - Cord_O;
+                            Rbox = Rbo(1);
+                            Rboy = Rbo(2);
                             Rfo = CordF_M - Cord_O;
+                            Rfox = Rfo(1);
+                            Rfoy = Rfo(2);
 
                             if sum(Rao) == 0 || sum(Rbo) == 0 || sum(Rfo) == 0
                                 disp('A nova coordenada precisa ser diferente das demais')
@@ -369,10 +390,10 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
 
                         end
 
-                        SMo = sum(cross(Rao,[Ax Ay 0])) + sum(cross(Rbo,[Bx By 0])) + sum(cross(Rfo, F)) + Ma + Mb + M == 0;
+                        SMo = (Ay * Raox) - (Ax * Raoy) + (By * Rbox) - (Bx * Rboy) + (Fy * Rfox) - (Fx * Rfoy) + Ma + Mb + M == 0;
                         var = [Ax Ay Bx By Ma Mb];
                         eqs = [SFx SFy SMa SMb SMf SMo];
-                        [Ax, Ay, Bx, By, Ma, Mb] = solve(eqs, var);
+                        [Ax, Ay, Ma, Bx, By, Mb] = solve(eqs, var);
                         Ax = double(Ax);
                         Ay = double(Ay);
                         Bx = double(Bx);
@@ -383,8 +404,8 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                     case 4
 
                         if NumR == 1
-                            Ay = -F(1, 2);
-                            Ax = -F(1, 1);
+                            Ay = -Fy;
+                            Ax = -Fx;
                             Ma = sum(cross(Rfa, F)) + M;
                             fprintf('Engaste A:\n\tAx = %.2f N\n\tAy = %.2f N\n\tMa = %.2f N*m', Ax, Ay, Ma)
                         else

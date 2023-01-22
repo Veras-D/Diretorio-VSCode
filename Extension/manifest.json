@@ -1,0 +1,11 @@
+{
+    "manifest_version": 3,
+    "version": "0.0.1",
+    "name": "Control speed yt",
+    "description": "Extensão para mudar a velocidade de reprodução dos videos no YouTube.",
+    "author": "Vero",
+    "action": {
+        "default_title": "YT speed",
+        "default_popup": "index.html"
+    }
+}
