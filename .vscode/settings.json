@@ -7,5 +7,6 @@
         "disp",
         "fprintf",
         "Joui"
-    ]
+    ],
+    "python.analysis.typeCheckingMode": "basic"
 }

@@ -394,6 +394,7 @@ while A1 ~= 1 && A1 ~= 2 && A1 ~= 3
                         var = [Ax Ay Bx By Ma Mb];
                         eqs = [SFx SFy SMa SMb SMf SMo];
                         [Ax, Ay, Ma, Bx, By, Mb] = solve(eqs, var);
+                        % TENTAR USAR O fsolve
                         Ax = double(Ax);
                         Ay = double(Ay);
                         Bx = double(Bx);
