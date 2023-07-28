@@ -8,5 +8,6 @@
         "fprintf",
         "Joui"
     ],
-    "python.analysis.typeCheckingMode": "basic"
+    "python.analysis.typeCheckingMode": "basic",
+    "C_Cpp.errorSquiggles": "disabled"
 }
