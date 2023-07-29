@@ -123,8 +123,8 @@ v_2 = np.linspace(v5, v1)
 P_2 = np.linspace(P5, P1)
 plt.plot(v_2, P_2)
 plt.show()
-# tentar fazer um grafico melhor
-# Ciclo real??? mistura ar mais combustivel
+# tentar fazer um gráfico melhor
+# Ciclo real??? mistura ar mais combustível
 # L_0 = m_ar / m_c = (1 / 0.23) * ((8 / 3) * x + 8 * y - Oc)
 # m_m = m_ar + m_c
 # m_m = P1 * V_m / (R * T1)
@@ -135,7 +135,8 @@ Dian = 0.1  # Diâmetro do cilindro cm
 s = 0.1  # altura do cilindro cm
 z = 6  # numero de cilindros
 Vd = pi * (Dian/2) ** 2 * s * z  # cilindrada cm^3
-N = 3200  # rpm
+N_rot = 3200  # rpm
 m_m = Vd * 1000 / (v1 - v2)  # kg
+print(m_m)
 # volume morto = v_total - v_cilindrada_unitária = V2
 # v_total = V1
