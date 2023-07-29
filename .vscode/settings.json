@@ -6,7 +6,9 @@
     "cSpell.words": [
         "disp",
         "fprintf",
-        "Joui"
+        "Joui",
+        "matplotlib",
+        "pyplot"
     ],
     "python.analysis.typeCheckingMode": "basic",
     "C_Cpp.errorSquiggles": "disabled"
