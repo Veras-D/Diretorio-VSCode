@@ -8,10 +8,10 @@ int main()
     float a, b, resul;
     printf("a: ");
     scanf("%f", &a);
-    printf("\nb: ");
+    printf("b: ");
     scanf("%f", &b);
     resul = media(a, b);
-    printf("\nO a media entre %.2f e %.2f é: %.2f\n", a, b, resul);
+    printf("O a media entre %.2f e %.2f é: %.2f\n", a, b, resul);
     return 0;
 }
 float media(float a, float b)
