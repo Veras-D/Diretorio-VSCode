@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Author" content="Veras-D">
+    <title>Aula Formulário</title>
+</head>
+<body>
+    <h1>Formulários</h1>
+    <form> <!--action="arquivo.php" method="get"-->
+        <label for="Teste">Nome:</label> <!--Legenda do formulário-->
+        <input id="Teste" type="text" placeholder="Digite um texto"> <!--Area de inserção de texto-->
+        <br>
+        <label for="Email">Email:</label>
+        <input type="email" name="Email" id="Email" placeholder="Digite seu email" required> <!--Email-->
+        <br>
+        <label for="Senha">Senha:</label>
+        <input type="password" name="Senha" id="Senha" placeholder="Digite sua senha" required> <!--Senha-->
+        <br>
+        <label for="Teste2">Lí e concordo com os termos de uso:</label>
+        <input type="checkbox" name="Checkbox" id="Teste2" value="True"> <!--Checkbox-->
+        <br><br>
+        <h3>Universidade</h3>
+        <input type="radio" name="universidade" id="ufma">
+        <label for="ufma">UFMA</label>
+        <br>
+        <input type="radio" name="universidade" id="uema">
+        <label for="uema">UEMA</label>
+        <br>
+        <input type="radio" name="universidade" id="estacio">
+        <label for="estacio">Estácio</label>
+        <br>
+        <input type="submit" value="Enviar"> <!--Botão de Submit-->
+    </form>
+    <br>
+    <h2>Seleção</h2>
+    <select name="Projeto" id="Proj">
+        <option selected disabled value="">Selecione Um Projeto</option>
+        <option value="Zeus">ZEUS</option>
+        <option value="Carcara">CARCARA</option>
+        <option value="Votex">VORTEX</option>
+    </select>
+    <br>
+    <h2>Area de Texto</h2>
+    <textarea name="Texto" id="Texto" cols="60" rows="10" placeholder="Escreva algo..."></textarea>
+    <br>
+    <hr>
+    <br>
+    <button>
+        Clique-me
+    </button>
+    <br><br>
+    <a href="index.html">Go to Home</a>
+</body>
+</html>
