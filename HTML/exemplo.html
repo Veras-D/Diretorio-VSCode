@@ -2,6 +2,25 @@
 <html>
 <head>
     <title>Titulo da pagina</title>
+    <style>
+        .btn{
+            background-color: black;
+            color: aqua;
+            width: 200px;
+            height: 100px;
+            border: 3px purple solid;
+            border-radius: 15px;
+        }
+        .btn:hover{
+            background-color: white;
+            color: black;
+            width: 200px;
+            height: 100px;
+            border: 3px greenyellow solid;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -64,6 +83,10 @@
     <video width="50%" controls poster="img/_a4110ab5-147f-4870-bd12-57fdb80db790.jpeg">
         <source src="video/Gravação de tela de 28-06-2023 01:13:55.webm">
     </video>
+    <br><br>
+    <button class="btn" onclick="alert('Mensagem')">
+        Teste
+    </button>
 </body>
 
 </html>
