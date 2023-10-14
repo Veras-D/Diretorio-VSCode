@@ -1,7 +1,7 @@
 # Listas: Coleção ordenável e mutável, permite membros duplicados
 lista = ['Aba', 'Rio', "Dio", 5, 3.5, False]
 print(lista[2])
-for item in lista: 
+for item in lista:
     print(item)
 
 ## Tuplas: coleção ordenada e imutável, permite membros duplicados
@@ -14,7 +14,7 @@ dicionario = {
     "logica": True,
     "numero": 2,
     "float": 2.5,
-    }
+}
 print(dicionario)
 print(dicionario["nome"])
 
