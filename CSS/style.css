@@ -7,11 +7,15 @@ body {
     margin: 0;
 }
 h1 {
+    margin-top: 5%;
+    margin-left: 1%;
     color: white;
     font-size: 88px;
     font-style: italic;
     border-left: 5px solid whitesmoke;
     border-radius: 10px;
+    text-align: left;
+    padding: 20px;
 }
 h2, h3 {
     color: white;
@@ -32,16 +36,26 @@ a:hover {
     color: blue;
 }
 .riscoso {
+    text-align: center;
     text-decoration: line-through;
 }
 .Lorem2{
-    height: 600px;
     background: grey url("../HTML/img/_a4110ab5-147f-4870-bd12-57fdb80db790.jpeg") no-repeat center;
     background-size: cover;
+    margin-bottom: 25%;
 }
 .Lorem2 p {
     text-align: justify;
 }
 #Home:hover{
     color: yellow;
+}
+.bnt{
+    border: 5px solid white;
+    border-radius: 10px;
+    text-decoration: none;
+}
+.bnt:hover{
+    background-color: grey;
+    border: 5px solid magenta;
 }
