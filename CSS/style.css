@@ -10,9 +10,13 @@ h1 {
     color: white;
     font-size: 88px;
     font-style: italic;
+    border-left: 5px solid whitesmoke;
+    border-radius: 10px;
 }
 h2, h3 {
     color: white;
+    border-bottom: 5px dotted white;
+    border-radius: 20px;
 }
 p {
     color: white;
@@ -31,7 +35,7 @@ a:hover {
     text-decoration: line-through;
 }
 .Lorem2{
-    height: 150px;
+    height: 600px;
     background: grey url("../HTML/img/_a4110ab5-147f-4870-bd12-57fdb80db790.jpeg") no-repeat center;
     background-size: cover;
 }
