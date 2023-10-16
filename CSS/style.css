@@ -54,8 +54,12 @@ a:hover {
     border: 5px solid white;
     border-radius: 10px;
     text-decoration: none;
+    width: 50px;
+    height: 25px;
 }
 .bnt:hover{
     background-color: grey;
     border: 5px solid magenta;
+    width: 50px;
+    height: 25px;
 }
