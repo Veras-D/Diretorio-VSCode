@@ -1,11 +1,15 @@
 * {
-    
     box-sizing: border-box;
     text-align: center;
     background-color: black;
 }
+body {
+    margin: 0;
+}
 h1 {
     color: white;
+    font-size: 88px;
+    font-style: italic;
 }
 h2 {
     color: white;
@@ -18,4 +22,20 @@ p {
 }
 a {
     color: magenta;
+    padding: 14px 16px;
+}
+a:hover {
+    color: greenyellow;
+}
+.Lorem {
+    color: blue;
+}
+.riscoso {
+    text-decoration: line-through;
+}
+.Lorem2 p {
+    text-align: justify;
+}
+#Home:hover{
+    color: yellow;
 }
