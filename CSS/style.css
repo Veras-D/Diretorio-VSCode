@@ -11,10 +11,7 @@ h1 {
     font-size: 88px;
     font-style: italic;
 }
-h2 {
-    color: white;
-}
-h3 {
+h2, h3 {
     color: white;
 }
 p {
@@ -32,6 +29,11 @@ a:hover {
 }
 .riscoso {
     text-decoration: line-through;
+}
+.Lorem2{
+    height: 150px;
+    background: grey url("../HTML/img/_a4110ab5-147f-4870-bd12-57fdb80db790.jpeg") no-repeat center;
+    background-size: cover;
 }
 .Lorem2 p {
     text-align: justify;
