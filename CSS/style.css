@@ -24,6 +24,7 @@ h2, h3 {
 }
 p {
     color: white;
+    text-indent: 60px;
 }
 a {
     color: magenta;
@@ -38,6 +39,12 @@ a:hover {
 .riscoso {
     text-align: center;
     text-decoration: line-through;
+    direction: rtl;
+    unicode-bidi: bidi-override;
+    text-transform: capitalize;
+    letter-spacing: 5px;
+    line-height: 2px;
+    word-spacing: 4px;
 }
 .Lorem2{
     background: grey url("../HTML/img/_a4110ab5-147f-4870-bd12-57fdb80db790.jpeg") no-repeat center;
