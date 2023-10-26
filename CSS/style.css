@@ -72,4 +72,48 @@ a:hover {
     width: 50px;
     height: 25px;
 }
+a.bt1{
+     background: cadetblue;
+     color: white;
+     padding: 10px;
+     text-decoration: nome;
+     border: 3px solid plum;
+     border-radius: 4px;
+}
+a.bt1:hover{
+    background: purple;
+    padding: 13px;
+}
+a.bt2{
+    color: white;
+    border: 5px dotted white;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+a.bt2:hover{
+    background: brown;
+    padding: 7px;
+}
+a.bt3{
+    color: greenyellow;
+    text-decoration: none;
+}
+a.bt3:hover{
+    text-decoration: underline;
+    color: white;
+}
+a.bt4{
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+}
+a.bt4:hover{
+    border-bottom: 10px solid magenta;
+    font-size: 22px;
+    font-weight: 400;
+}
+a.bt5{
+    cursor: progress;
+}
 /*Comentário*/
