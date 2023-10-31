@@ -116,4 +116,10 @@ a.bt4:hover{
 a.bt5{
     cursor: progress;
 }
+p {
+    display: block;
+}
+p:hover{
+    display: inline;
+}
 /*Comentário*/
