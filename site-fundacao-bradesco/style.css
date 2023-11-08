@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+    text-align: center;
+}
+body {
+    margin: 0;
+}
+h1 {
+    padding: 20px;
+}
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 5px;
+}
+ul {
+    display: inline-block;
+    padding-bottom: 10px;
+}
+.bloco {
+    border: 5px solid black;
+    width: 30%;
+    display: inline-block;
+}
