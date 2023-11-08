@@ -6,6 +6,8 @@
 :root {
     --black: black;
     --white: white;
+    --bg: var(--white); 
+    --fontColor: var(--black); 
 }
 body {
     background: var(--bg);
@@ -25,20 +27,40 @@ ul {
     display: inline-block;
     padding-bottom: 10px;
     font-style: italic;
+}
 #list {
     list-style: circle;
 }
-}
 .bloco {
-    border: 5px solid black;
+    border: 3px solid;
+    border-color: var(--fontColor);
     width: 30%;
     display: inline-block;
 }
 .light-theme {
     --bg: var(--white);
     --fontColor: var(--black);
+    --btnFontColor: var(--black)
+    --btnBg: var(--white)
 }
 .dark-theme {
     --bg: var(--black);
     --fontColor: var(--white);
+    --btnFontColor: var(--white)
+    --btnBg: var(--black)
+}
+.btn {
+    position: absolute;
+    top: 20px;
+    left: 250px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: solid 2px;
+    border-color: var(--btnFontColor);
+    color: var(--btnFontColor);
+    background-color: var(--btnBg);
+}
+.btn:focus {
+    outline-style: none;
 }
