@@ -2,7 +2,7 @@
 Site de estudo desenvolvido durante o curso "Crie um Site Simples Usando HTML, CSS E JavaScript" distribuído pela Fundação Bradesco
 ## Resultados
 <div class="picture">
-<img src="https://i.imgur.com/BBKtGDA.png" alt="teste">
+<img src="https://i.imgur.com/BBKtGDA.png" widht="50%" alt="teste">
 ![Tema Claro](https://i.imgur.com/BBKtGDA.png)
 </div>
 <div class="picture">
