@@ -64,3 +64,7 @@ ul {
 .btn:focus {
     outline-style: none;
 }
+.picture {
+    width: 45%;
+    align-items: center;
+}
