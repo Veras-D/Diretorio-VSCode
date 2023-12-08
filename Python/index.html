@@ -3,12 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css">
-    <script defer="" src="https://pyscript.net/latest/pyscript.js"></script>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2023.11.1/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2023.11.1/core.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <py-script>print('Teste')</py-script>
+    <section class="pyscript">
+        <script type="py">
+            import pyscript as ps
+            a = 10
+            b = 20
+            test = 'teste3'
+            print(a+b)
+            print('teste1')
+            print("teste2")
+            print(test)
+            ps.display(test)
+        </script>
+        <h1><script type="py">from pyscript import display; a='aaaaaaaaaa'; display(a)</script></h1> <!--Fazer isso por um arquivo separado-->
+        Teste
+        <h2><script type="py" src="./h2.py"></script></h2>
+    </section>
     <!-- <py-config>
         plugins = [
           "https://pyscript.net/latest/plugins/python/py_tutor.py"
