@@ -12,7 +12,7 @@ for x1 in range(30, 151, 40):
 					for h1 in range(5, 8):
 						for r2 in range(2, 8, 2):
 							for h2 in range(5, 8):
-								if x1 != x2 and y1 != y2:
+								if x1 != x2 or y1 != y2:
 									i+=1
 
 i = int(i / 250)
@@ -25,7 +25,7 @@ for x1 in range(30, 151, 40):
 					for h1 in range(5, 8):
 						for r2 in range(2, 8, 2):
 							for h2 in range(5, 8):
-								if x1 != x2 and y1 != y2:
+								if x1 != x2 or y1 != y2:
 									if 1 == random.randint(1, i+1):
 										try:
 											# Abrindo o arquivo base
@@ -78,3 +78,6 @@ for x1 in range(30, 151, 40):
 						
 										except Exception as e:
 											print(f"Erro ao processar {x1}-{y1}-{x2}-{y2}-{r1}-{h1}-{r2}-{h2}: {e}")
+
+if (x1 != x2 != x3 != x1 != x3) or (y1 != y2 != y3 != y1):
+    
