@@ -79,5 +79,10 @@ for x1 in range(30, 151, 40):
 										except Exception as e:
 											print(f"Erro ao processar {x1}-{y1}-{x2}-{y2}-{r1}-{h1}-{r2}-{h2}: {e}")
 
-if (x1 != x2 != x3 != x1 != x3) or (y1 != y2 != y3 != y1):
-    
+
+# if ((x1 != x2 and x2 != x3 and x1 != x3) or (y1 != y2 and y2 != y3 and y1 != y3)):
+# if ((x1 != x2 and x2 != x3 and x1 != x3 and x1 != x4 and x2 != x4 and x3 != x4) or (y1 != y2 and y2 != y3 and y1 != y3 and y1 != y4 and y2 != y4 and y3 != y4)):
+# if ((x1 != x2 and x2 != x3 and x1 != x3 and x1 != x4 and x2 != x4 and x3 != x4 and x1 != x5 and x2 != x5 and x3 != x5 and x4 != x5) or (y1 != y2 and y2 != y3 and y1 != y3 and y1 != y4 and y2 != y4 and y3 != y4 and y1 != y5 and y2 != y5 and y3 != y5 and y4 != y5)):
+# if ((x1 != x2 and x2 != x3 and x1 != x3 and x1 != x4 and x2 != x4 and x3 != x4 and x1 != x5 and x2 != x5 and x3 != x5 and x4 != x5 and x1 != x6 and x2 != x6 and x3 != x6 and x4 != x6 and x5 != x6) or (y1 != y2 and y2 != y3 and y1 != y3 and y1 != y4 and y2 != y4 and y3 != y4 and y1 != y5 and y2 != y5 and y3 != y5 and y4 != y5 and y1 != y6 and y2 != y6 and y3 != y6 and y4 != y6 and y5 != y6)):
+# if ((x1 != x2 and x2 != x3 and x1 != x3 and x1 != x4 and x2 != x4 and x3 != x4 and x1 != x5 and x2 != x5 and x3 != x5 and x4 != x5 and x1 != x6 and x2 != x6 and x3 != x6 and x4 != x6 and x5 != x6 and x1 != x7 and x2 != x7 and x3 != x7 and x4 != x7 and x5 != x7 and x6 != x7) or (y1 != y2 and y2 != y3 and y1 != y3 and y1 != y4 and y2 != y4 and y3 != y4 and y1 != y5 and y2 != y5 and y3 != y5 and y4 != y5 and y1 != y6 and y2 != y6 and y3 != y6 and y4 != y6 and y5 != y6 and y1 != y7 and y2 != y7 and y3 != y7 and y4 != y7 and y5 != y7 and y6 != y7)):
+# if ((x1 != x2 and x2 != x3 and x1 != x3 and x1 != x4 and x2 != x4 and x3 != x4 and x1 != x5 and x2 != x5 and x3 != x5 and x4 != x5 and x1 != x6 and x2 != x6 and x3 != x6 and x4 != x6 and x5 != x6 and x1 != x7 and x2 != x7 and x3 != x7 and x4 != x7 and x5 != x7 and x6 != x7 and x1 != x8 and x2 != x8 and x3 != x8 and x4 != x8 and x5 != x8 and x6 != x8 and x7 != x8) or (y1 != y2 and y2 != y3 and y1 != y3 and y1 != y4 and y2 != y4 and y3 != y4 and y1 != y5 and y2 != y5 and y3 != y5 and y4 != y5 and y1 != y6 and y2 != y6 and y3 != y6 and y4 != y6 and y5 != y6 and y1 != y7 and y2 != y7 and y3 != y7 and y4 != y7 and y5 != y7 and y6 != y7 and y1 != y8 and y2 != y8 and y3 != y8 and y4 != y8 and y5 != y8 and y6 != y8 and y7 != y8)):
