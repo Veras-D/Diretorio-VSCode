@@ -22,14 +22,13 @@
 
 
 // i = i / 250; Usar para 2 furos ou mais
+int tempo;
 
 // Garantir que a imagem esteja centralizada
 for (int x1 = 30; x1 <= 150; x1 += 40) {
    for (int y1 = 30; y1 <= 150; y1 += 40) {
        for (int r1 = 2; r1 <= 7; r1 += 2) {
            for (int h1 = 5; h1 <= 7; h1++) {
-                img += 1;
-
                 model.param().set("x1",x1+"[mm]");
                 model.param().set("y1",y1+"[mm]");
                 model.param().set("r1",r1+"[mm]");
@@ -39,12 +38,12 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
 
                 // Max value Temperatura
 
-                model.result().numerical().create("max"x1+"-"+y1+"-"+r1+"-"+h1, "MaxSurface");
-                model.result().numerical("max"x1+"-"+y1+"-"+r1+"-"+h1).set("data", "surf1");
+                model.result().numerical().create("max"+x1+"-"+y1+"-"+r1+"-"+h1, "MaxSurface");
+                model.result().numerical("max"+x1+"-"+y1+"-"+r1+"-"+h1).set("data", "surf1");
                 model.result().table().create("maxTemp", "Table");
                 model.result().table("maxTemp").comments("Gerado no Application Builder");
-                model.result().numerical("max"x1+"-"+y1+"-"+r1+"-"+h1).set("table", "maxTemp");
-                model.result().numerical("max"x1+"-"+y1+"-"+r1+"-"+h1).setResult();
+                model.result().numerical("max"+x1+"-"+y1+"-"+r1+"-"+h1).set("table", "maxTemp");
+                model.result().numerical("max"+x1+"-"+y1+"-"+r1+"-"+h1).setResult();
                 model.result().create("pg10", "PlotGroup1D");
                 model.result("pg10").set("data", "none");
                 model.result("pg10").create("tblp1", "Table");
@@ -56,12 +55,12 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
 
                 // Min value Temperatura
 
-                model.result().numerical().create("min"x1+"-"+y1+"-"+r1+"-"+h1, "MinSurface");
-                model.result().numerical("min"x1+"-"+y1+"-"+r1+"-"+h1).set("data", "surf1");
+                model.result().numerical().create("min"+x1+"-"+y1+"-"+r1+"-"+h1, "MinSurface");
+                model.result().numerical("min"+x1+"-"+y1+"-"+r1+"-"+h1).set("data", "surf1");
                 model.result().table().create("minTemp", "Table");
                 model.result().table("minTemp").comments("Gerado no Application Builder");
-                model.result().numerical("min"x1+"-"+y1+"-"+r1+"-"+h1).set("table", "minTemp");
-                model.result().numerical("min"x1+"-"+y1+"-"+r1+"-"+h1).setResult();
+                model.result().numerical("min"+x1+"-"+y1+"-"+r1+"-"+h1).set("table", "minTemp");
+                model.result().numerical("min"+x1+"-"+y1+"-"+r1+"-"+h1).setResult();
                 model.result().create("pg10", "PlotGroup1D");
                 model.result("pg10").set("data", "none");
                 model.result("pg10").create("tblp1", "Table");
@@ -78,28 +77,28 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
                 // Obtendo o número total de linhas na tabela
                 int numRows = tableMax.getNRows();
 
-                // Percorre cada linha na tabela
+                // Percorrendo linhas da tabela
                 for (int i = 0; i < numRows; i++) {
                     // Obtendo os dados da linha atual
                     String[] maxRowData = tableMax.getTableRow(i, false);
                     String[] minRowData = tableMin.getTableRow(i, false);
                     
                     // Transformando para valor real e obtendo a diferença
-                    double maxValue = Double.parseDouble(maxRowData[0]);
-                    double minValue = Double.parseDouble(minRowData[0]);
+                    double maxValue = Double.parseDouble(maxRowData[1]); // Ver se ess valor é mesmo o valor da temperatura
+                    double minValue = Double.parseDouble(minRowData[1]);
 
-                    double contrate = maxValue - minValue;
+                    double contraste = maxValue - minValue;
                     
                     // definindo tempo
                     if (i == 0) {
-                        int tempo = i;
-                        double contrateAnterior = contrate;
+                        int tempo = i+1;
+                        double contrasteAnterior = contraste;
                     } else {
-                        if (contrate > contrateAnterior) {
-                            int tempo = i;
-                            double contrateAnterior = contrate;
+                        if (contraste > contrasteAnterior) {
+                            int tempo = i+1;
+                            double contrasteAnterior = contraste;
                         } else {
-                            double contrateAnterior = contrate;
+                            double contrasteAnterior = contraste;
 
                         }
                         
@@ -110,6 +109,8 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
                 // Fim Melhor Tempo
 
                 // Plotagem
+                model.result("pg10").feature("surf1").setIndex("looplevel", tempo, 0);
+                model.result("pg10").run();
 
                 // Export de imagem
 
