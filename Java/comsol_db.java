@@ -22,7 +22,9 @@
 
 
 // i = i / 250; Usar para 2 furos ou mais
-int tempo;
+int tempo = 0;
+double contraste = 0;
+double contrasteAnterior;
 
 // Garantir que a imagem esteja centralizada
 for (int x1 = 30; x1 <= 150; x1 += 40) {
@@ -91,7 +93,6 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
                     
                     // definindo tempo
                     if (i == 0) {
-                        int tempo = i+1;
                         double contrasteAnterior = contraste;
                     } else {
                         if (contraste > contrasteAnterior) {
