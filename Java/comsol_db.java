@@ -30,7 +30,7 @@ double contrasteAnterior;
 for (int x1 = 30; x1 <= 150; x1 += 40) {
    for (int y1 = 30; y1 <= 150; y1 += 40) {
        for (int r1 = 2; r1 <= 7; r1 += 2) {
-           for (int h1 = 5; h1 <= 7; h1++) {
+           for (int h1 = 4; h1 <= 7; h1++) {
                 model.param().set("x1",x1+"[mm]");
                 model.param().set("y1",y1+"[mm]");
                 model.param().set("r1",r1+"[mm]");
@@ -46,14 +46,14 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
                 model.result().table("maxTemp").comments("Gerado no Application Builder");
                 model.result().numerical("max"+x1+"-"+y1+"-"+r1+"-"+h1).set("table", "maxTemp");
                 model.result().numerical("max"+x1+"-"+y1+"-"+r1+"-"+h1).setResult();
-                model.result().create("pg10", "PlotGroup1D");
-                model.result("pg10").set("data", "none");
-                model.result("pg10").create("tblp1", "Table");
-                model.result("pg10").feature("tblp1").set("source", "table");
-                model.result("pg10").feature("tblp1").set("table", "maxTemp");
-                model.result("pg10").feature("tblp1").set("linewidth", "preference");
-                model.result("pg10").feature("tblp1").set("markerpos", "datapoints");
-                model.result("pg10").run();
+                model.result().create("pg1", "PlotGroup1D");
+                model.result("pg1").set("data", "none");
+                model.result("pg1").create("tblp1", "Table");
+                model.result("pg1").feature("tblp1").set("source", "table");
+                model.result("pg1").feature("tblp1").set("table", "maxTemp");
+                model.result("pg1").feature("tblp1").set("linewidth", "preference");
+                model.result("pg1").feature("tblp1").set("markerpos", "datapoints");
+                model.result("pg1").run();
 
                 // Min value Temperatura
 
@@ -63,14 +63,14 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
                 model.result().table("minTemp").comments("Gerado no Application Builder");
                 model.result().numerical("min"+x1+"-"+y1+"-"+r1+"-"+h1).set("table", "minTemp");
                 model.result().numerical("min"+x1+"-"+y1+"-"+r1+"-"+h1).setResult();
-                model.result().create("pg10", "PlotGroup1D");
-                model.result("pg10").set("data", "none");
-                model.result("pg10").create("tblp1", "Table");
-                model.result("pg10").feature("tblp1").set("source", "table");
-                model.result("pg10").feature("tblp1").set("table", "minTemp");
-                model.result("pg10").feature("tblp1").set("linewidth", "preference");
-                model.result("pg10").feature("tblp1").set("markerpos", "datapoints");
-                model.result("pg10").run();
+                model.result().create("pg1", "PlotGroup1D");
+                model.result("pg1").set("data", "none");
+                model.result("pg1").create("tblp1", "Table");
+                model.result("pg1").feature("tblp1").set("source", "table");
+                model.result("pg1").feature("tblp1").set("table", "minTemp");
+                model.result("pg1").feature("tblp1").set("linewidth", "preference");
+                model.result("pg1").feature("tblp1").set("markerpos", "datapoints");
+                model.result("pg1").run();
 
                 // Melhor Tempo
                 TableBaseFeature tableMax = model.result().table("maxTemp");
@@ -89,17 +89,17 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
                     double maxValue = Double.parseDouble(maxRowData[1]); // Ver se ess valor é mesmo o valor da temperatura
                     double minValue = Double.parseDouble(minRowData[1]);
 
-                    double contraste = maxValue - minValue;
+                    contraste = maxValue - minValue;
                     
                     // definindo tempo
                     if (i == 0) {
-                        double contrasteAnterior = contraste;
+                        contrasteAnterior = contraste;
                     } else {
                         if (contraste > contrasteAnterior) {
                             int tempo = i+1;
-                            double contrasteAnterior = contraste;
+                            contrasteAnterior = contraste;
                         } else {
-                            double contrasteAnterior = contraste;
+                            contrasteAnterior = contraste;
 
                         }
                         
@@ -110,8 +110,8 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
                 // Fim Melhor Tempo
 
                 // Plotagem
-                model.result("pg10").feature("surf1").setIndex("looplevel", tempo, 0);
-                model.result("pg10").run();
+                model.result("pg1").feature("surf1").setIndex("looplevel", tempo, 0);
+                model.result("pg1").run();
 
                 // Export de imagem
 
@@ -151,7 +151,7 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
                 model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("qualityactive", "off");
                 model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("imagetype", "png");
                 model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("lockview", "off");
-                model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("pngfilename", "C:\\Users\\CCT\\Desktop\\umDefeitos\\"x1+"-"+y1+"-"+r1+"-"+h1".png");
+                model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("pngfilename", "C:\\Users\\CCT\\Desktop\\umDefeitos\\"x1+"-"+y1+"-"+r1+"-"+h1"-"+tempo".png");
                 model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).run();
                 model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("sourceobject", "pg1");
                 model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).run();
