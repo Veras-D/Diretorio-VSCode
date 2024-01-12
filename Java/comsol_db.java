@@ -30,10 +30,10 @@ double contrasteAnterior = 0;
 // Garantir que a imagem esteja centralizada
 for (int x1 = 30; x1 <= 150; x1 += 40) {
   for (int y1 = 30; y1 <= 150; y1 += 40) {
-    for (int r1 = 2; r1 <= 7; r1 += 2) {
-      for (int h1 = 4; h1 <= 7; h1++) {
-      
-        double med = (r1 + h1) / 2;
+    for (int r1 = 2; r1 <= 8; r1 += 2) {
+      for (int h1 = 4; h1 <= 8; h1++) {
+        
+        double med = (r1+h1)/2;
         // Geometria
         model.param().set("x1", x1+"[mm]");
         model.param().set("y1", y1+"[mm]");
@@ -42,7 +42,7 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
         
         model.component("comp1").geom("geom1").run("fin");
         // Fim Geometria
-
+        
         // Computando
         model.sol("sol1").study("std1");
         model.study("std1").feature("time").set("notlistsolnum", 1);
@@ -58,7 +58,7 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
         model.sol("sol1").create("v1", "Variables");
         model.sol("sol1").feature("v1").set("control", "time");
         model.sol("sol1").create("t1", "Time");
-        model.sol("sol1").feature("t1").set("tlist", "range(0,1,60)");
+        model.sol("sol1").feature("t1").set("tlist", "range(0,1,30)");
         model.sol("sol1").feature("t1").set("plot", "off");
         model.sol("sol1").feature("t1").set("plotgroup", "pg1");
         model.sol("sol1").feature("t1").set("plotfreq", "tout");
@@ -112,9 +112,9 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
         model.sol("sol1").feature("t1").feature("i1").feature("mg1").feature("po").feature("so1").set("relax", 0.9);
         model.sol("sol1").feature("t1").feature("i1").feature("mg1").feature("cs").create("d1", "Direct");
         model.sol("sol1").feature("t1").feature("i1").feature("mg1").feature("cs").feature("d1")
-            .set("linsolver", "pardiso");
+          .set("linsolver", "pardiso");
         model.sol("sol1").feature("t1").feature("i1").feature("mg1").feature("cs").feature("d1")
-            .set("pivotperturb", 1.0E-13);
+          .set("pivotperturb", 1.0E-13);
         model.sol("sol1").feature("t1").feature("fc1").set("linsolver", "d1");
         model.sol("sol1").feature("t1").feature("fc1").set("jtech", "once");
         model.sol("sol1").feature("t1").feature("fc1").set("damp", 0.9);
@@ -126,7 +126,7 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
         model.sol("sol1").attach("std1");
         model.sol("sol1").runAll();
         model.result("pg1").run();
-        // Fim Computando 
+        // Fim Computando
         
         // Max value Temperatura
         
@@ -167,10 +167,10 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
         TableBaseFeature tableMin = model.result().table("minTemp");
         
         // Obtendo o número total de linhas na tabela
-        int numRows = tableMax.getNRows();
+        // int numRows = tableMax.getNRows();
         
         // Percorrendo linhas da tabela
-        for (int i = 0; i < numRows; i++) {
+        for (int i = 0; i < 30; i++) {
           // Obtendo os dados da linha atual
           String[] maxRowData = tableMax.getTableRow(i, false);
           String[] minRowData = tableMin.getTableRow(i, false);
@@ -200,8 +200,9 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
         // Fim Melhor Tempo
         
         // Plotagem
-        model.result("pg3").feature("surf1").setIndex("looplevel", tempo, 0);
-        model.result("pg3").run();
+        model.result("pg1").setIndex("looplevel", tempo, 0);
+        model.result("pg1").run();
+        
         
         // Export de imagem
         
@@ -242,13 +243,13 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
         model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("imagetype", "png");
         model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("lockview", "off");
         if (med <= 4) {
-          model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("pngfilename", "C:\\Users\\USER\\Desktop\\umDefeitos\\Leve\\"+x1+"-"+y1+"-"+r1+"-"+h1+"-"+tempo+".png");
-        } else if (med > 4 && med <=6) {
-          model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("pngfilename", "C:\\Users\\USER\\Desktop\\umDefeitos\\Moderado\\"+x1+"-"+y1+"-"+r1+"-"+h1+"-"+tempo+".png");
+          model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("pngfilename", "C:\\Users\\USER\\Desktop\\umDefeitos30\\Leve\\"+x1+"-"+y1+"-"+r1+"-"+h1+"-"+tempo+".png");
+        } else if (med > 4 && med <= 6) {
+          model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("pngfilename", "C:\\Users\\USER\\Desktop\\umDefeitos30\\Moderado\\"+x1+"-"+y1+"-"+r1+"-"+h1+"-"+tempo+".png");
         } else if (med > 6) {
-          model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("pngfilename", "C:\\Users\\USER\\Desktop\\umDefeitos\\Severo\\"+x1+"-"+y1+"-"+r1+"-"+h1+"-"+tempo+".png");
+          model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("pngfilename", "C:\\Users\\USER\\Desktop\\umDefeitos30\\Severo\\"+x1+"-"+y1+"-"+r1+"-"+h1+"-"+tempo+".png");
         } else {
-          model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("pngfilename", "C:\\Users\\USER\\Desktop\\umDefeitos\\Error\\"+x1+"-"+y1+"-"+r1+"-"+h1+"-"+tempo+".png");
+          model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("pngfilename", "C:\\Users\\USER\\Desktop\\umDefeitos30\\Error\\"+x1+"-"+y1+"-"+r1+"-"+h1+"-"+tempo+".png");
         }
         model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).run();
         model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("sourceobject", "pg1");
