@@ -26,11 +26,12 @@ int tempo = 0;
 double contraste = 0;
 double contrasteAnterior = 0;
 
+
 // Garantir que a imagem esteja centralizada
 for (int x1 = 30; x1 <= 150; x1 += 40) {
   for (int y1 = 30; y1 <= 150; y1 += 40) {
-    for (int r1 = 6; r1 <= 7; r1 += 2) {
-      for (int h1 = 6; h1 <= 7; h1++) {
+    for (int r1 = 2; r1 <= 7; r1 += 2) {
+      for (int h1 = 4; h1 <= 7; h1++) {
         model.param().set("x1", x1+"[mm]");
         model.param().set("y1", y1+"[mm]");
         model.param().set("r1", r1+"[mm]");
@@ -46,14 +47,14 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
         model.result().table("maxTemp").comments("Gerado no Application Builder");
         model.result().numerical("max"+x1+"-"+y1+"-"+r1+"-"+h1).set("table", "maxTemp");
         model.result().numerical("max"+x1+"-"+y1+"-"+r1+"-"+h1).setResult();
-        model.result().create("pg1", "PlotGroup1D");
-        model.result("pg1").set("data", "none");
-        model.result("pg1").create("tblp1", "Table");
-        model.result("pg1").feature("tblp1").set("source", "table");
-        model.result("pg1").feature("tblp1").set("table", "maxTemp");
-        model.result("pg1").feature("tblp1").set("linewidth", "preference");
-        model.result("pg1").feature("tblp1").set("markerpos", "datapoints");
-        model.result("pg1").run();
+        model.result().create("plot_table_max", "PlotGroup1D");
+        model.result("plot_table_max").set("data", "none");
+        model.result("plot_table_max").create("tblp1", "Table");
+        model.result("plot_table_max").feature("tblp1").set("source", "table");
+        model.result("plot_table_max").feature("tblp1").set("table", "maxTemp");
+        model.result("plot_table_max").feature("tblp1").set("linewidth", "preference");
+        model.result("plot_table_max").feature("tblp1").set("markerpos", "datapoints");
+        model.result("plot_table_max").run();
         
         // Min value Temperatura
         
@@ -63,14 +64,14 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
         model.result().table("minTemp").comments("Gerado no Application Builder");
         model.result().numerical("min"+x1+"-"+y1+"-"+r1+"-"+h1).set("table", "minTemp");
         model.result().numerical("min"+x1+"-"+y1+"-"+r1+"-"+h1).setResult();
-        model.result().create("pg1", "PlotGroup1D");
-        model.result("pg1").set("data", "none");
-        model.result("pg1").create("tblp1", "Table");
-        model.result("pg1").feature("tblp1").set("source", "table");
-        model.result("pg1").feature("tblp1").set("table", "minTemp");
-        model.result("pg1").feature("tblp1").set("linewidth", "preference");
-        model.result("pg1").feature("tblp1").set("markerpos", "datapoints");
-        model.result("pg1").run();
+        model.result().create("plot_table_min", "PlotGroup1D");
+        model.result("plot_table_min").set("data", "none");
+        model.result("plot_table_min").create("tblp1", "Table");
+        model.result("plot_table_min").feature("tblp1").set("source", "table");
+        model.result("plot_table_min").feature("tblp1").set("table", "minTemp");
+        model.result("plot_table_min").feature("tblp1").set("linewidth", "preference");
+        model.result("plot_table_min").feature("tblp1").set("markerpos", "datapoints");
+        model.result("plot_table_min").run();
         
         // Melhor Tempo
         TableBaseFeature tableMax = model.result().table("maxTemp");
@@ -110,12 +111,12 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
         // Fim Melhor Tempo
         
         // Plotagem
-        model.result("pg1").feature("surf1").setIndex("looplevel", tempo, 0);
-        model.result("pg1").run();
+        model.result("pg3").feature("surf1").setIndex("looplevel", tempo, 0);
+        model.result("pg3").run();
         
         // Export de imagem
         
-        model.result().export().create(x1+"-"+y1+"-"+r1+"-"+h1, x1+"-"+y1+"-"+r1+"-"+h1);
+        model.result().export().create(x1+"-"+y1+"-"+r1+"-"+h1, "Image");
         model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("size", "manualweb");
         model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("unit", "px");
         model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("height", "224");
@@ -155,6 +156,14 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
         model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).run();
         model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("sourceobject", "pg1");
         model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).run();
+        model.result().numerical().remove("max"+x1+"-"+y1+"-"+r1+"-"+h1);
+        model.result().table().remove("maxTemp");
+        model.result().numerical().remove("min"+x1+"-"+y1+"-"+r1+"-"+h1);
+        model.result().table().remove("minTemp");
+        model.result().export().remove(x1+"-"+y1+"-"+r1+"-"+h1);
+        tempo = 0;
+        contraste = 0;
+        contrasteAnterior = 0;
       }
     }
   }
