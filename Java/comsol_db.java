@@ -32,12 +32,19 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
   for (int y1 = 30; y1 <= 150; y1 += 40) {
     for (int r1 = 2; r1 <= 7; r1 += 2) {
       for (int h1 = 4; h1 <= 7; h1++) {
+
+        // Geometria
         model.param().set("x1", x1+"[mm]");
         model.param().set("y1", y1+"[mm]");
         model.param().set("r1", r1+"[mm]");
         model.param().set("h1", h1+"[mm]");
         
         model.component("comp1").geom("geom1").run("fin");
+        // Fim Geometria
+
+        // Computando
+        
+        // Fim Computando 
         
         // Max value Temperatura
         
