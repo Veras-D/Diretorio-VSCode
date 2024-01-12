@@ -32,7 +32,8 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
   for (int y1 = 30; y1 <= 150; y1 += 40) {
     for (int r1 = 2; r1 <= 7; r1 += 2) {
       for (int h1 = 4; h1 <= 7; h1++) {
-
+      
+        double med = (r1 + h1) / 2;
         // Geometria
         model.param().set("x1", x1+"[mm]");
         model.param().set("y1", y1+"[mm]");
@@ -240,7 +241,15 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
         model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("qualityactive", "off");
         model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("imagetype", "png");
         model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("lockview", "off");
-        model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("pngfilename", "C:\\Users\\USER\\Desktop\\umDefeitos\\"+x1+"-"+y1+"-"+r1+"-"+h1+"-"+tempo+".png");
+        if (med <= 4) {
+          model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("pngfilename", "C:\\Users\\USER\\Desktop\\umDefeitos\\Leve\\"+x1+"-"+y1+"-"+r1+"-"+h1+"-"+tempo+".png");
+        } else if (med > 4 && med <=6) {
+          model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("pngfilename", "C:\\Users\\USER\\Desktop\\umDefeitos\\Moderado\\"+x1+"-"+y1+"-"+r1+"-"+h1+"-"+tempo+".png");
+        } else if (med > 6) {
+          model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("pngfilename", "C:\\Users\\USER\\Desktop\\umDefeitos\\Severo\\"+x1+"-"+y1+"-"+r1+"-"+h1+"-"+tempo+".png");
+        } else {
+          model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("pngfilename", "C:\\Users\\USER\\Desktop\\umDefeitos\\Error\\"+x1+"-"+y1+"-"+r1+"-"+h1+"-"+tempo+".png");
+        }
         model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).run();
         model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("sourceobject", "pg1");
         model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).run();
