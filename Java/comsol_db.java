@@ -209,8 +209,8 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
         model.result().export().create(x1+"-"+y1+"-"+r1+"-"+h1, "Image");
         model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("size", "manualweb");
         model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("unit", "px");
-        model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("height", "224");
-        model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("width", "224");
+        model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("height", "300");
+        model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("width", "300");
         model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("lockratio", "on");
         model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("resolution", "96");
         model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("antialias", "on");
@@ -244,9 +244,9 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
         model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("lockview", "off");
         if (med <= 4) {
           model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("pngfilename", "C:\\Users\\USER\\Desktop\\umDefeitos30\\Leve\\"+x1+"-"+y1+"-"+r1+"-"+h1+"-"+tempo+".png");
-        } else if (med > 4 && med <= 6) {
+        } else if (med > 4 && med < 6) {
           model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("pngfilename", "C:\\Users\\USER\\Desktop\\umDefeitos30\\Moderado\\"+x1+"-"+y1+"-"+r1+"-"+h1+"-"+tempo+".png");
-        } else if (med > 6) {
+        } else if (med >= 6) {
           model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("pngfilename", "C:\\Users\\USER\\Desktop\\umDefeitos30\\Severo\\"+x1+"-"+y1+"-"+r1+"-"+h1+"-"+tempo+".png");
         } else {
           model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("pngfilename", "C:\\Users\\USER\\Desktop\\umDefeitos30\\Error\\"+x1+"-"+y1+"-"+r1+"-"+h1+"-"+tempo+".png");
