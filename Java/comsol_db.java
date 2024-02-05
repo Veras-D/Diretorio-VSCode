@@ -25,6 +25,7 @@
 int tempo = 0;
 double contraste = 0;
 double contrasteAnterior = 0;
+FileWriter writer = new FileWriter("contraste.txt", true);
 
 
 // Garantir que a imagem esteja centralizada
@@ -259,6 +260,9 @@ for (int x1 = 30; x1 <= 150; x1 += 40) {
         model.result().numerical().remove("min"+x1+"-"+y1+"-"+r1+"-"+h1);
         model.result().table().remove("minTemp");
         model.result().export().remove(x1+"-"+y1+"-"+r1+"-"+h1);
+
+        writer.write(x1+"-"+y1+"-"+r1+"-"+h1+"-"+tempo + ": " + contraste + "K" + "\n");
+        writer.close();
         tempo = 0;
         contraste = 0;
         contrasteAnterior = 0;
