@@ -330,7 +330,7 @@ for (int numDefeitos = 1; numDefeitos <= 4; numDefeitos += 1) {
                                           Severo-Severo
                                   */
 
-                                      model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("pngfilename", "C:\\Users\\USER\\Desktop\\umDefeitos30\\"+label1+"-"+label2+"\\"+x1+"-"+y1+"-"+r1+"-"+h1+"-"+tempo+"-"+label1+"-"+label2+".png");
+                                      model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("pngfilename", "C:\\Users\\USER\\Desktop\\doisDefeitos30\\"+label1+"-"+label2+"\\"+x1+"-"+y1+"-"+r1+"-"+h1+"-"+tempo+"-"+label1+"-"+label2+".png");
 
                                       writer.write(x1+"-"+y1+"-"+r1+"-"+h1+"-"+tempo+"-"+label1+"-"+label2+": "+contraste+" K"+"\n");
                                       writer.close();
@@ -403,7 +403,7 @@ for (int numDefeitos = 1; numDefeitos <= 4; numDefeitos += 1) {
         Severo-Severo-Severo; 
 */
 
-    model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("pngfilename", "C:\\Users\\USER\\Desktop\\umDefeitos30\\"+label1+"-"+label2+"-"+label3+"\\"+x1+"-"+y1+"-"+r1+"-"+h1+"-"+tempo+"-"+label1+"-"+label2+"-"+label3+".png");
+    model.result().export(x1+"-"+y1+"-"+r1+"-"+h1).set("pngfilename", "C:\\Users\\USER\\Desktop\\tresDefeitos30\\"+label1+"-"+label2+"-"+label3+"\\"+x1+"-"+y1+"-"+r1+"-"+h1+"-"+tempo+"-"+label1+"-"+label2+"-"+label3+".png");
 
 
     writer.write(x1+"-"+y1+"-"+r1+"-"+h1+"-"+tempo+label1+"-"+label2+"-"+label3": "+contraste+" K"+"\n");
