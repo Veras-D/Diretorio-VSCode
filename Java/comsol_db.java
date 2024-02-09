@@ -364,7 +364,7 @@ for (int numDefeitos = 1; numDefeitos <= 4; numDefeitos += 1) {
                                     for (int y3 = 30; y3 <= 150; y3 += 40) {
                                         for (int r3 = 2; r3 <= 7; r3 += 2) {
                                             for (int h3 = 5; h3 <= 7; h3++) {
-                                                if (x1 != x2 || y1 != y2) {
+                                              if ((x1 != x2 && x2 != x3 && x1 != x3) || (y1 != y2 && y2 != y3 && y1 != y3)) {
                                                   i++;
                                                 }
                                             }
