@@ -352,6 +352,34 @@ for (int numDefeitos = 1; numDefeitos <= 4; numDefeitos += 1) {
 
     int i = 0;
 
+    for (int x1 = 30; x1 <= 150; x1 += 40) {
+      for (int y1 = 30; y1 <= 150; y1 += 40) {
+          for (int x2 = 30; x2 <= 150; x2 += 40) {
+              for (int y2 = 30; y2 <= 150; y2 += 40) {
+                  for (int r1 = 2; r1 <= 7; r1 += 2) {
+                      for (int h1 = 5; h1 <= 7; h1++) {
+                          for (int r2 = 2; r2 <= 7; r2 += 2) {
+                              for (int h2 = 5; h2 <= 7; h2++) {
+                                  for (int x3 = 30; x3 <= 150; x3 += 40) {
+                                    for (int y3 = 30; y3 <= 150; y3 += 40) {
+                                        for (int r3 = 2; r3 <= 7; r3 += 2) {
+                                            for (int h3 = 5; h3 <= 7; h3++) {
+                                                if (x1 != x2 || y1 != y2) {
+                                                  i++;
+                                                }
+                                            }
+                                        }
+                                    }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    }
+
     i = i / 250;
 
 
