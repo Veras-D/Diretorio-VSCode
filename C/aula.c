@@ -10,5 +10,5 @@ int main()
     float altura = 1.77;
 
     printf("Nome: %s\nIdade: %i\nSexo: %s\nAltura: %.2f\n", nome, idade, sexo, altura);
-    return 0;
+    return 0;   
 }
