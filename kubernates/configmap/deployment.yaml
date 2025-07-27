@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: configmap-deployment
+  labels:
+    app: configmap
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: configmap
+  template:
+    metadata:
+      labels:
+        app: configmap
+    spec:
+      containers:
+        - name: configmap-container
+          image: :latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-config
+                  key: NODE_ENV
+            - name: API_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-config
+                  key: API_URL
