@@ -3,14 +3,18 @@ provider "aws" {
   profile = var.aws_profile
 }
 
-resource "aws_s3_bucket" "my-test-bucket" {
+resource "aws_s3_bucket" "this" {
   bucket = "my-tf-bucket-${random_id.bucket_id.hex}"
 
-  tags = {
-    Name        = "My first bucket from terraform"
-    Environment = "Dev"
-    ManagedBy   = "Terraform"
-  }
+  tags = local.common_tags
+}
+
+resource "aws_s3_object" "this" {
+  bucket  = aws_s3_bucket.this.bucket
+  key     = "config/ips.json"
+  content = jsonencode({ ips = ["192.168.0.1", "192.168.0.2"] })
+
+  tags = local.common_tags
 }
 
 resource "random_id" "bucket_id" {
