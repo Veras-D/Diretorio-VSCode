@@ -1,6 +1,33 @@
+terraform {
+  backend "s3" {
+    bucket = "tfstate-664418958633"
+    key    = "/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+
 provider "aws" {
   region  = var.aws_region
   profile = var.aws_profile
+}
+
+data "aws_caller_identity" "current" {}
+
+resource "aws_s3_bucket" "remote-state" {
+  bucket = "tfstate-${data.aws_caller_identity.current.account_id}"
+}
+
+resource "aws_s3_bucket_acl" "remote-state" {
+  bucket = aws_s3_bucket.remote-state.id
+  acl    = "private"
+}
+
+resource "aws_s3_bucket_versioning" "versioning_remote-state" {
+  bucket = aws_s3_bucket.remote-state.id
+
+  versioning_configuration {
+    status = "Enabled"
+  }
 }
 
 resource "aws_s3_bucket" "this" {
