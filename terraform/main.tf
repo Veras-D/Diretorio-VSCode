@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "tfstate-664418958633"
-    key    = "/terraform.tfstate"
+    key    = "./terraform.tfstate"
     region = "us-east-1"
   }
 }
@@ -49,7 +49,7 @@ resource "random_id" "bucket_id" {
 }
 
 resource "aws_instance" "first-ec2-terraform" {
-  ami           = var.instance_ami
+  ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
 
   tags = var.instance_tags

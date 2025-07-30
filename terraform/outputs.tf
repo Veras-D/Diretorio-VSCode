@@ -21,3 +21,7 @@ output "remote_state_bucket" {
 output "remote_state_bucket_arn" {
   value = aws_s3_bucket.remote-state.arn
 }
+
+output "aws_instance_id" {
+  value = data.aws_ami.ubuntu.id
+}
