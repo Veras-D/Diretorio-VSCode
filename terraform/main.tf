@@ -46,9 +46,41 @@ resource "random_id" "bucket_id" {
   byte_length = var.bucket_id_byte_length
 }
 
-resource "aws_instance" "first-ec2-terraform" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = var.instance_type
+module "bucket" {
+  source = "./s3_module"
+  name   = "s3_bucket_module-${random_id.bucket_id.hex}"
 
-  tags = var.instance_tags
+  versioning = {
+    enabled = "Enabled"
+  }
+}
+
+module "website" {
+  source = "./s3_module"
+  name   = "s3_bucker_module_website-${random_id.bucket_id.hex}}"
+  acl    = "public-read"
+  files  = "${path.root}/website"
+  policy = <<EOT
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::${random_id.bucket_id.hex}/*"
+            ]
+        }
+    ]
+}
+EOT
+
+  website = {
+    suffix = "index.html"
+    key    = "error.html"
+  }
 }
