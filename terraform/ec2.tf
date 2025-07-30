@@ -25,3 +25,15 @@ resource "aws_instance" "this" {
     var.instance_tags
   )
 }
+
+resource "aws_instance" "web-env" {
+  count = lookup(var.instance_env, local.env)["number"]
+
+  ami           = lookup(var.instance_env, local.env)["ami"]
+  instance_type = lookup(var.instance_env, local.env)["type"]
+
+  tags = {
+    Name = "EC2 web ${local.env}"
+    Env  = local.env
+  }
+}

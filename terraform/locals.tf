@@ -18,4 +18,6 @@ locals {
       private : "122.123.123.23",
     }
   ]
+
+  env = terraform.workspace == "default" ? "dev" : terraform.workspace
 }

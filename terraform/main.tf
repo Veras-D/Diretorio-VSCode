@@ -1,8 +1,9 @@
 terraform {
   backend "s3" {
-    bucket = "tfstate-664418958633"
-    key    = "./terraform.tfstate"
-    region = "us-east-1"
+    bucket         = "tfstate-664418958633"
+    key            = "./terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "tflock-tfstate-664418958633"
   }
 }
 
@@ -25,6 +26,18 @@ resource "aws_s3_bucket_versioning" "versioning_remote-state" {
 
   versioning_configuration {
     status = "Enabled"
+  }
+}
+
+resource "aws_dynamodb_table" "lock-table" {
+  name           = "tflock-${data.aws_caller_identity.current.account_id}"
+  read_capacity  = 5
+  write_capacity = 5
+  hash_key       = "LockID"
+
+  attribute {
+    name = "LockID"
+    type = "S"
   }
 }
 

@@ -36,3 +36,33 @@ variable "instance_tags" {
     Project = "terraform test"
   }
 }
+
+variable "instance_env" {
+  description = "Instance configuration per workspace"
+
+  type = object({
+    dev = object({
+      ami    = string
+      type   = string
+      number = number
+    })
+    prod = object({
+      ami    = string
+      type   = string
+      number = number
+    })
+  })
+
+  default = {
+    dev = {
+      ami    = "ami-02127283774ff5e66"
+      type   = "t2.micro"
+      number = 1
+    }
+    prod = {
+      ami    = "ami-02127283774ff5e66"
+      type   = "t2.micro"
+      number = 3
+    }
+  }
+}

@@ -18,12 +18,12 @@ variable "tags" {
 }
 
 variable "key_prefix" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "files" {
-  type = string
+  type    = string
   default = ""
 }
 
@@ -31,7 +31,7 @@ variable "website" {
   description = "Map containing website configuration."
   type = object({
     suffix                   = string
-    key                      = string
+    key                      = optional(string)
     redirect_all_requests_to = optional(string)
     routing_rules            = optional(string, "")
   })
