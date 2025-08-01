@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: volumes-deployment
+  labels:
+    app: volumes
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: volumes
+  template:
+    metadata:
+      labels:
+        app: volumes
+    spec:
+      containers:
+        - name: volumes-container
+          image: busybox
+          command: ["sh", "-c", "echo \"log: $(date)\" >> /data/log.txt && sleep 60"]
+          volumeMounts:
+            - name: empty-dir
+              mountPath: /data
+            - name: hostpath
+              mountPath: /data
+            - name: pvc-local-mnt
+              mountPath: /data
+          ports:
+            - containerPort: 3000
+      volumes:
+        - name: empty-dir
+          emptyDir: {}
+        - name: hostpath
+          hostPath:
+            path: /data-log
+            type: DirectorOrCreate
+        - name: pvc-local-mnt
+          persistentVolumeClaim:
+            clainName: pvc-local

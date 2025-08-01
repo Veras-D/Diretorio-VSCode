@@ -30,3 +30,8 @@ spec:
                 configMapKeyRef:
                   name: configmap-config
                   key: API_URL
+            - name: DB_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: secret-config
+                  key: DB_PASS
