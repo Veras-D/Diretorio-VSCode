@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: wait-pc
+spec:
+  capacity:
+    storage: 100Mi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: "wait-sc"
+  hostPath:
+    path: /tmp/data
+  persistentVolumeReclainPolicy: Retain

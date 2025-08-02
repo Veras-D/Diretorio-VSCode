@@ -1,0 +1,6 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: wait-sc
+provisioner: k8s.io/k3d-hostpath
+volumeBindingMode: WaitForFirstConsumer
