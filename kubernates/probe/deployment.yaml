@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: probe-container
-          image: authlab
+          image: auth-lab
           ports:
             - containerPort: 3000
           startupProbe:

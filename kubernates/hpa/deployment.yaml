@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-lab
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-lab
+  template:
+    metadata:
+      labels:
+        app: auth-lab
+    spec:
+      containers:
+        - name: app
+          image: auth-lab
+          resources:
+            requests:
+              cpu: "100m"
+            limits:
+              cpu: "500m"
